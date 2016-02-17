@@ -15,8 +15,9 @@
                   return n < 2 ? 1 : fib(n - 1) + fib(n - 2);
                 };
 
-                ////////
+                //UNCOMMENT THIS SECTION TO RUN THE PARALLEL VERSION
 
+                /*
                 var start = new Date().getTime();
 
                 var p = new Parallel([40, 41, 42, 43, 44, 45, 46]),
@@ -27,10 +28,13 @@
                     console.log(end-start);
                 };
 
-                p.map(fib).then(log);
+                p.map(fib).then(log); */
 
                 ///////
 
+                //UNCOMMENT THIS SECTION TO RUN THE NON-PARALLEL VERSION
+
+                /*
                 var start2 = new Date().getTime();
 
                 var noP = [40, 41, 42, 43, 44, 45, 46];
@@ -42,6 +46,7 @@
                 var end2 = new Date().getTime();
 
                 console.log(end2-start2); //milliseconds
+                */
             });
         </script>
     </body>
