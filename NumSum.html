@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Javascript Parallel Test</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="hamsters.js"></script>
+        <script src="underscore-min.js"></script>
+    </head>
+
+    <body>
+        <script>
+        $( document ).ready(function() {
+
+            var x = 500000; //end value of range
+
+            //start of work for parallel version
+            var start = 0;
+            var end = 0;
+
+            $("#begin").click(function() {
+                start = new Date().getTime();
+                $("#time").html("");
+                $("#answer").html("calculating...");
+                doIt();
+            })
+
+            function toDo() {
+                var arr = params.array;
+
+                arr.forEach(function(item) {
+                    rtn.data.push(item * 5);
+                })
+            }
+
+            function whenDone(output) {
+                $("#answer").html("");
+                output.forEach(function(item) {
+                    $("#answer").append(item + "<br />");
+                })
+                end = new Date().getTime();
+                $("#time").append("Time operation took:  " + ((end-start)/1000) + " seconds");
+                console.log(output);
+                return output;
+            }
+
+            function doIt() {
+                var params = {'array': _.range(0, x)};
+
+                hamsters.run(params, toDo, whenDone, 4, true);
+            }
+
+            //work for regular nonthreaded version
+            function regular() {
+                $("#time2").html("");
+                $("#answer2").html("calculating...");
+
+                var start2 = new Date().getTime();
+
+                var arr2 = _.range(0, x);
+                var output2 = new Array();
+
+                arr2.forEach(function(item) {
+                    output2.push(item * 5);
+                })
+
+                $("#answer2").html("");
+
+                output2.forEach(function(item) {
+                    $("#answer2").append(item + "<br />");
+                })
+
+                var end2 = new Date().getTime();
+                $("#time2").append("Time operation took:  " + ((end2-start2)/1000) + " seconds");
+
+                console.log(output2);
+            }
+
+            $("#begin2").click(regular);
+
+        });
+
+        </script>
+
+        <div id="result" style="float:left;">
+            <input type="button" value="start w/threads" id="begin"/>
+            <br>
+            <p id="time"></p>
+            <p id="answer"></p>
+        </div>
+        <div id="result2" style="float:right;">
+            <input type="button" value="start w/o threads" id="begin2" />
+            <br />
+            <p id="time2"></p>
+            <p id="answer2"></p>
+        </div>
+    </body>
+</html>
