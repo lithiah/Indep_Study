@@ -12,7 +12,7 @@
         <script>
         $( document ).ready(function() {
 
-            var x = 500000; //end value of range
+            var endRange = 500000; //end value of range
 
             //start of work for parallel version
             var start = 0;
@@ -45,7 +45,7 @@
             }
 
             function doIt() {
-                var params = {'array': _.range(0, x)};
+                var params = {'array': _.range(0, endRange)};
 
                 hamsters.run(params, toDo, whenDone, 4, true);
             }
@@ -57,7 +57,7 @@
 
                 var start2 = new Date().getTime();
 
-                var arr2 = _.range(0, x);
+                var arr2 = _.range(0, endRange);
                 var output2 = new Array();
 
                 arr2.forEach(function(item) {
