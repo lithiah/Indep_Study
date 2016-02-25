@@ -6,7 +6,7 @@
     <style>
         .week {
             /*border: 1px solid black;*/
-            margin: 2%;
+            margin: 5%;
             padding: 2%;
         }
     </style>
@@ -44,6 +44,7 @@
                 However, there were also some issues. Running the same script on Firefox on Linux kept crashing the Firefox window before the script could finish executing. In additon, in my script a separate thread was opened for each number in the fibonnaci sequence I wanted to calculate. So with this script it wasn't clear whether you could perform a task combining the resulting work of the parallel processing.
             </p>
         </div>
+
         <div class="week">
             <h2>Week 3</h2>
             <p>
@@ -71,6 +72,39 @@
             </p>
             <p>
                 Links: https://nerget.com/rayjs-mt/rayjs.html    http://stackoverflow.com/questions/11871452/can-web-workers-utilize-100-of-a-multi-core-cpu
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 4</h2>
+            <p>
+                Task:
+                <br />
+                (1) Try to find evidence of speed issues in calculating Parallel Coordinates, or if none, another data visualization which is time intesive to calculate.
+                <br />
+                (2) Figure out what tools/software/languages to use in conjunction with C++ for project
+            </p>
+            <p>
+                Result:
+                <br />
+                (1) Struggled to find anything in reference to speed issues when it comes to Parallel Coordinates, or really in terms of any specific kind of data visualization.
+            </p>
+            <p>
+                (2) There appear to be three major options if the goal is to use C++ with the web. None of them really had anything that specifically talked about parallelism capabilities with these tools, so that's still up in the air a bit.
+                <ol>
+                    <li>
+                        <a href="http://www.webtoolkit.eu/wt">WebToolKit's Wt</a>, a C++ library for developing web applications. Not too many examples of people using this, but they do exist. It seems like it's probably capable of using d3/javascript in conjunction with this, or there are C++ visualization libraries that can definitely be used. Client-side responsiveness is questionable.
+                    </li>
+                    <li>
+                        <a href="http://leaningtech.com/cheerp/index.html">Cheerp</a>, which is a C++ compiler for the web and will translate C++ code to optimized javascript. I don't this this would work well given that javascript doesn't do parallel, so I don't know how/if that would translate.
+                    </li>
+                    <li>
+                        <a href="http://lupomontero.com/writing-node-js-modules-in-cpp/">C++ Module for Node.js</a>. Node.js has the ability to import C++ modules in order to boost performance. Those C++ modules can use their own libraries and everything so presumably writing the C++ code in parallel is doable. Could also probably use this with <a href="http://mango-is.com/blog/engineering/pre-render-d3-js-charts-at-server-side.html">sever-side pre-rendered d3</a> to improve speed.
+                    </li>
+                </ol>
+            </p>
+            <p>
+                To use C++ without a web component is also possible, there is <a href="http://www.xdat.org/">XDAT</a> which is a free tool for download written in java. You can also make charts using R, which is integratable with C++ through <a href="http://dirk.eddelbuettel.com/code/rcpp.html">RCPP</a>. The downside to these options is of course a lack of responsiveness to the visualization, and the fact that it won't be available then on the web.
             </p>
         </div>
     </body>
