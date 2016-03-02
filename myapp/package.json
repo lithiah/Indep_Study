@@ -1,9 +1,13 @@
 {
   "name": "myapp",
   "version": "0.0.0",
-  "private": true,
+  "main": "index.js",
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lithiah/Indep_Study"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
