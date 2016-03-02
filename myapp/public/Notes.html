@@ -1,0 +1,107 @@
+<DOCTYPE! HTML5>
+<html>
+    <head>
+        <title>Independent Study Notes</title>
+    </head>
+    <style>
+        .week {
+            margin: 5%;
+            padding: 2%;
+        }
+    </style>
+    <body>
+        <h1>Independent Study: Parallelizing Data Visualization</h1>
+
+        <h3>Semester Goal: Find an existing big data visualization and write it to process the data in parallel.</h3>
+
+        <div class="week">
+            <h2>Week 1</h2>
+            <p>
+                Task: Explore what types of visualizations are out there, specifically looking at types of visualizations that were used for very large data sets. Also look to see to what extent data viz in parallel is already being worked on/if there is existing research that would be useful, and what tools are available for performing these operations in parallel for the web.
+            </p>
+            <p>
+                Result: Found several cool data visualizations out there (Glyphplots, Radar Charts, Arc Diagrams, Parallel Sets), but the one that seemed to be most used/had the most tools to support it was Parallel Coordinates. Because of the abundance of tools/software/libraries will the ability to generate parallel coordinates, I decided to use this as my visualization type.
+            </p>
+            <img src="ParCorEx.png" />
+            <p>
+                When looking for existing research on this topic, I found a few existing researchers publishing work in this area (<a href="http://vidi.cs.ucdavis.edu/research/parallelvis ">1</a>, <a href="http://web.cse.ohio-state.edu/~hwshen/hwshen/ParallelVis.html">2</a>, <a href="http://ix.cs.uoregon.edu/~hank/hpcvis.html">3</a>). However these works are a bit beyond the scope/level of what I am trying to achieve with this course, so I'm not sure yet how useful they can be.
+            </p>
+            <p>
+                Finally, in looking for what is available out there in terms of writing in parallel for the web, the first thing I came across was <a href="https://adambom.github.io/parallel.js/">Parallel.js</a> which is a library for multi-core processing in Javascript. Assuming this works, using it would allow me to write the visualization in javascript/with the D3 library and also host it on the web, both benefits over the only other real alternative which seems to be OpenGL for C++.
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 2</h2>
+            <p>
+                Task: Write a small script demonstrating that Parallel.js works as intended, and that I'll be able to use it for this project.
+            </p>
+            <p>
+                Result: I did successfully write a <a href="JS_Parallel_Test.html" target="_blank">script</a> using example code for calculating numbers in the fibonacci sequence found <a href="http://www.sitepoint.com/parallel-javascript-with-paralleljs/">here</a>. Running it on Chrome on my Mac, I found that the parallel version used all four cores of my Mac whereas the regular version used one. In addition, I saw about a 10 second difference in finishing time (the parallel version finishing faster).
+            </p>
+            <p>
+                However, there were also some issues. Running the same script on Firefox on Linux kept crashing the Firefox window before the script could finish executing. In additon, in my script a separate thread was opened for each number in the fibonnaci sequence I wanted to calculate. So with this script it wasn't clear whether you could perform a task combining the resulting work of the parallel processing.
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 3</h2>
+            <p>
+                Task:
+                <br />
+                (1) Do research on the stability of Parallel.js (why wasn't it working in Firefox/Linux?)
+                <br />
+                (2) Try to locate some examples of existing projects that use Parallel.js successfully.
+                <br />
+                (3) Fix issues with previous week's script by writing another script using Parallel.js that adds numbers in different threads.
+            </p>
+            <p>
+                Result:
+                <br />
+                (1) According to the compatability chart provided at the bottom of the its <a href="https://github.com/adambom/parallel.js?utm_source=dlvr.it&utm_medium=twitter">README</a>, Parallel.js is fairly behind in terms of compatibility. It only lists official compatability with Chrome v22.0-26.0 and Firefox v20.0-22.0. This news does not bode well as it would suggest Parallel.js is not being currently updated. My current Chrome browser is v48, and it did still seem to work. Due to unanticipated weather conditions, I haven't been able to access a computer on which to download earlier versions of Chrome and Firefox for personal testing.
+            </p>
+            <p>
+                (2) My efforts to find an example of software currently using Parallel.js were not successful. Everything I could find were articles on Parallel.js and how to use it, nothing that actually did. Furthermore, all these articles were dated around 2013.
+            </p>
+            <p>
+                (3) After finding these disheartening results about Parallel.js, and agian due to time restrictions because of the weather, while I began on writing another Parallel.js script, I did not finish this task.
+            </p>
+            <p>
+                *I do think it important to note that Web Workers, which Parallel.js is built on, is currently supported in the most recent versions of all major browsers. I thought this might be a good idea for what to use instead of Parallel.js, but I am not finding much in terms of using Web Workers to perform tasks in parallel.
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 4</h2>
+            <p>
+                Task:
+                <br />
+                (1) Try to find evidence of speed issues in calculating Parallel Coordinates, or if none, another data visualization which is time intesive to calculate.
+                <br />
+                (2) Figure out what tools/software/languages to use in conjunction with C++ for project
+            </p>
+            <p>
+                Result:
+                <br />
+                (1) Struggled to find anything in reference to speed issues when it comes to Parallel Coordinates, or really in terms of any specific kind of data visualization.
+            </p>
+            <p>
+                (2) There appear to be three major options if the goal is to use C++ with the web. None of them really had anything that specifically talked about parallelism capabilities with these tools, so that's still up in the air a bit.
+                <ol>
+                    <li>
+                        <a href="http://www.webtoolkit.eu/wt">WebToolKit's Wt</a>, a C++ library for developing web applications. Not too many examples of people using this, but they do exist. It seems like it's probably capable of using d3/javascript in conjunction with this, or there are C++ visualization libraries that can definitely be used. Client-side responsiveness is questionable.
+                    </li>
+                    <li>
+                        <a href="http://leaningtech.com/cheerp/index.html">Cheerp</a>, which is a C++ compiler for the web and will translate C++ code to optimized javascript. I don't this this would work well given that javascript doesn't do parallel, so I don't know how/if that would translate.
+                    </li>
+                    <li>
+                        <a href="http://lupomontero.com/writing-node-js-modules-in-cpp/">C++ Module for Node.js</a>. Node.js has the ability to import C++ modules in order to boost performance. Those C++ modules can use their own libraries and everything so presumably writing the C++ code in parallel is doable. Could also probably use this with <a href="http://mango-is.com/blog/engineering/pre-render-d3-js-charts-at-server-side.html">sever-side pre-rendered d3</a> to improve speed.
+                    </li>
+                </ol>
+            </p>
+            <p>
+                To use C++ without a web component is also possible, there is <a href="http://www.xdat.org/">XDAT</a> which is a free tool for download written in java. You can also make charts using R, which is integratable with C++ through <a href="http://dirk.eddelbuettel.com/code/rcpp.html">RCPP</a>. The downside to these options is of course a lack of responsiveness to the visualization, and the fact that it won't be available then on the web.
+            </p>
+        </div>
+    </body>
+</html>
