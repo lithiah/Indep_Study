@@ -3,5 +3,8 @@ extends layout
 block content
   h1= title
   h2 here's what the c++ addon has to say: #{cppOutput}
+  form#inputNumbers(name="addnumber",method="post",action="/addnumber")
+        input#numberToAdd(type="text", placeholder="number", name="number")
+        button#btnSubmit(type="submit") submit
   p Click this square to change it's color!
   #svgContainer

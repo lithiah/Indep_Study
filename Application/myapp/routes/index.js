@@ -8,9 +8,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Colors', cppOutput: cpphello.hello() });
 });
 
-/* GET Hello World page. */
-router.get('/helloworld', function(req, res) {
-    res.render('helloworld', { title: 'Hello, World!' });
+router.get('/results', function(req, res, next) {
+  res.render('results', { title: 'Results', sentValue: 4 });
+});
+
+router.post('/addnumber', function(req, res) {
+
+    var number = req.body.number;
+    console.log(number);
+
+    res.render('results', { title: "Results", sentValue: number });
 });
 
 module.exports = router;
