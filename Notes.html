@@ -8,6 +8,10 @@
             margin: 5%;
             padding: 2%;
         }
+
+        img {
+            border: 1px solid black;
+        }
     </style>
     <body>
         <h1>Independent Study: Parallelizing Data Visualization</h1>
@@ -22,7 +26,7 @@
             <p>
                 Result: Found several cool data visualizations out there (Glyphplots, Radar Charts, Arc Diagrams, Parallel Sets), but the one that seemed to be most used/had the most tools to support it was Parallel Coordinates. Because of the abundance of tools/software/libraries will the ability to generate parallel coordinates, I decided to use this as my visualization type.
             </p>
-            <img src="ParCorEx.png" />
+            <img src="Images/ParCorEx.png" />
             <p>
                 When looking for existing research on this topic, I found a few existing researchers publishing work in this area (<a href="http://vidi.cs.ucdavis.edu/research/parallelvis ">1</a>, <a href="http://web.cse.ohio-state.edu/~hwshen/hwshen/ParallelVis.html">2</a>, <a href="http://ix.cs.uoregon.edu/~hank/hpcvis.html">3</a>). However these works are a bit beyond the scope/level of what I am trying to achieve with this course, so I'm not sure yet how useful they can be.
             </p>
@@ -114,15 +118,42 @@
             <p>
                 Result:
                 <br />
-                I needed to make an app with a Node.js backend, so that I would be able to import C++ code as an addon module. To that end, I made an <a href="www.expressjs.com">Express</a> app because I have used Express before and the Express generator will initialize the skeleton structure of your app for you. After a bunch of mucking around, I setup a simple page that connects to javascript code that randomly generates a colored square using javascript, d3, and jQuery.
+                I needed to make an app with a Node.js backend, so that I would be able to import C++ code as an addon module. To that end, I made an <a href="www.expressjs.com">Express</a> app because I have used Express before and the <a href="http://expressjs.com/en/starter/generator.html">Express generator</a> will initialize the skeleton structure of your app for you. After a bunch of mucking around, I setup a simple page that connects to javascript code that randomly generates a colored square using javascript, d3, and jQuery.
             </p>
             <p>
                  Once I had this running, it took a lot of googling about modules and C++ addons specifically, but I finally came across some tutorials (<a href="http://luismreis.github.io/node-bindings-guide/docs/getting-started.html">1</a>, <a href="http://lupomontero.com/writing-node-js-modules-in-cpp/">2</a>) that helped me setup a simple hello world C++ module, compile it, and use it within my app. At first I was having compile issues, but I realized that the code I used was out-of-sync with the node version I'm running, so I updated the code and this problem was solved.
             </p>
             <p>
+                Here are some screenshots of the relevant code in my express app:
+                <br /><br />
+                The route to the Index view: when a user navigates to "/" on app it sends them to the index jade file through here. It passes the parameters "title" which is hard coded as "Colors", and cppOutput, which passes the result of calling our C++ module's hello function. Notice we require the module at the top of the file so that we can use it's methods.
+                <br />
+                <img src="Images/IndexJS.png" />
+                <br /><br />
+                The index Jade layout. The "Colors" we passed as the title gets filled in line 4, and the cppOutput goes in line 5. Below is the #svgContainer which we manipulate with the javascript.
+                <br />
+                <img src="Images/IndexJade.png" />
+                <br /><br />
+                The layout that all Jade pages extend from (this is where js links go). GlobalJS is the js file I wrote which deals with the #svgContainer on the homepage.
+                <br />
+                <img src="Images/LayoutJade.png" />
+                <br /><br />
+                The javascript which handles the color changing square. We add a square to #svgContainer and then on click randomly change it's color with the get_random_color() function.
+                <br />
+                <img src="Images/GlobalJS.png" />
+                <br /><br />
+                This is the cpp addon module (and it's associated files in the directory structure). The "build" subdirectory is created as a result of compiling the code using node-gyp.
+                <br />
+                <img src="Images/CppHello.png" />
+                <br /><br />
+                Finally, this is what the user sees upon loading the application. Note that "world" is what the cpphello method hello() returns, which is why it's filled in as the cppOutput parameter we passed. 
+                <br />
+                <img src="Images/Colors.png" />
+
+            </p>
+            <p>
                 I was having sftp issues with copying entire directories, so I wasn't able to get the app up onto the cs.wheaton server yet, but the code for running it locally is in the <a href="https://github.com/lithiah/Indep_Study">github repo</a> for this project. A screenshot of the webpage is below ("world" is being generated by a C++ module hellocpp.hello() function in the app). In addition, the C++ code I wrote isn't complicated because I didn't have enough time this week to start learning the ins and outs of the V8 Javascript library, which you need in order to link C++ code to Node.js.
             </p>
-            <img src="Colors.png" style="border: 1px solid black"/>
         </div>
 
         <div class="week">
@@ -132,7 +163,7 @@
                 <br />
                 (1) Host application on the server
                 <br />
-                (2) Get data walking back and forther client>server>client
+                (2) Get data walking back and forther client>server>client CHECK
                 <br />
                 (3) Try C++ addon using threading (ex: sum up numbers)
             </p>
