@@ -5,19 +5,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Colors', cppOutput: cpphello.hello() });
+  res.render('index', { title: 'Testing'});
 });
 
-router.get('/results', function(req, res, next) {
-  res.render('results', { title: 'Results', sentValue: 4 });
-});
-
-router.post('/addnumber', function(req, res) {
-
+router.post('/', function(req, res, next) {
     var number = req.body.number;
-    console.log(number);
+    console.log("input number: ", number);
 
-    res.render('results', { title: "Results", sentValue: number });
-});
+    res.render('index', { title: 'Testing', sentValue: number, cppOutput: cpphello.foo(number), threadTest: cpphello.threadTest() });
+})
 
 module.exports = router;

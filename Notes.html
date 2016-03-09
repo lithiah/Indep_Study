@@ -11,6 +11,8 @@
 
         img {
             border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
         }
     </style>
     <body>
@@ -165,12 +167,30 @@
                 <br />
                 (1) Host application on the server
                 <br />
-                (2) Get data walking back and forther client>server>C++>server>client CHECK
+                (2) Get data walking back and forther client=>server=>C++=>server=>client CHECK
                 <br />
                 (3) Try C++ addon using threading (ex: sum up numbers)
             </p>
             <p>
                 Result:
+                <br>
+                (1) As of now, this isn't done yet. Still running application locally.
+            </p>
+            <p>
+                (2) I wrote a one line form in which the user submits a number. This value is then passed to the cpphello.foo() function I created which takes that number and returns 2*number. This is then passed to the jade view which renders it.
+                <br /><br />
+                Here's the image of the user interface. The user entered the number 332, and 664 was returned. Below is the foo method in the C++ addon, next to the line where this method, in the C++ addon called "Yo" get's renamed to "foo" which is what I call it when I use the method in the app.
+                <br />
+                <img src="Images/TestingNumberTimesTwo.png" />
+                <br />
+                <img src="Images/fooFunction.png" /><img src="Images/handleFoo.png" />
+            </p>
+            <p>
+                (3) Right now I have a method which executes one thread. The string "Hello" is passed to the thread, where the first character is then switched to "a". Then, once the thread finishes, the main function returns to the application this string "aello." Below we see the application where the result of this function has been passed to the client. Under that is the corresponding code in the addon. Note that not shown is the fact that you need to include the libraries pthread.h and unistd.h for the threading.
+                <br />
+                <img src="Images/threadTest.png" />
+                <br />
+                <img src="Images/threadTestCpp.png" />
             </p>
         </div>
     </body>
