@@ -186,11 +186,16 @@
                 <img src="Images/fooFunction.png" /><img src="Images/handleFoo.png" />
             </p>
             <p>
-                (3) Right now I have a method which executes one thread. The string "Hello" is passed to the thread, where the first character is then switched to "a". Then, once the thread finishes, the main function returns to the application this string "aello." Below we see the application where the result of this function has been passed to the client. Under that is the corresponding code in the addon. Note that not shown is the fact that you need to include the libraries pthread.h and unistd.h for the threading.
+                (3) First I made a method which executes one thread. The string "Hello" is passed to the thread, where the first character is then switched to "a". Then, once the thread finishes, the main function returns to the application this string "aello." Below we see the application where the result of this function has been passed to the client. Under that is the corresponding code in the addon. Note that not shown is the fact that you need to include the libraries pthread.h and unistd.h for the threading.
                 <br />
                 <img src="Images/threadTest.png" />
                 <br />
                 <img src="Images/threadTestCpp.png" />
+            </p>
+            <p>
+                I then made a method which executes two threads to sum from one to a number, that number being the same one submitted by the user through the form for the times 2 method earlier. The code for this is shown below. It should be noted that the sums aren't correct, however I tested this code outside the application and it is a fault of the code, not the app. I copy-pasted it from <a href="http://cs.wheatonma.edu/mgousie/comp345/sumodd3.cpp">here</a>, where it was provided for Operating Systems 345 last semester, so not sure what's wrong with it. 
+                <br />
+                <img src="Images/threadSum.png" />
             </p>
         </div>
     </body>

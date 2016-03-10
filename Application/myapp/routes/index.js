@@ -9,10 +9,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    var number = req.body.number;
+    var number = parseInt(req.body.number);
     console.log("input number: ", number);
 
-    res.render('index', { title: 'Testing', sentValue: number, cppOutput: cpphello.foo(number), threadTest: cpphello.threadTest() });
+    res.render('index', { title: 'Testing', sentValue: number, cppOutput: cpphello.timesTwo(number), threadTest: cpphello.threadTest(), threadSum: cpphello.threadSum(number) });
 })
 
 module.exports = router;
