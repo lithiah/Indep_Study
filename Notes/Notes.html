@@ -193,10 +193,41 @@
                 <img src="Images/threadTestCpp.png" />
             </p>
             <p>
-                I then made a method which executes two threads to sum from one to a number, that number being the same one submitted by the user through the form for the times 2 method earlier. The code for this is shown below. It should be noted that the sums aren't correct, however I tested this code outside the application and it is a fault of the code, not the app. I copy-pasted it from <a href="http://cs.wheatonma.edu/mgousie/comp345/sumodd3.cpp">here</a>, where it was provided for Operating Systems 345 last semester, so not sure what's wrong with it. 
+                I then made a method which executes two threads to sum the odd integers from one to a number, that number being the same one submitted by the user through the form for the times 2 method earlier. The code for this is shown below. I copy-pasted it from <a href="http://cs.wheatonma.edu/mgousie/comp345/sumodd3.cpp">here</a>.
                 <br />
                 <img src="Images/threadSum.png" />
             </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 7</h2>
+            <p>
+                Direction of Project Update: At this point in time, there were two ways to go with the project. One route would be to do any kind of data visualization (like parallel coordinates), but provide it with a LOT of data which would be where the parallization comes in. The second route would be to work on a clustering problem, where a lot of calculations would be required (where the parallelization comes in) and then make a visualization of the clustering.
+                <br /><br />
+                The second route seemed the more challenging of the two, so that's the one we went with. So there are then two problems to tackle, (1) calculating the clusters, and (2) visualizing the clusters.
+                <br /><br />
+                Professor Gousie already has done work with clustering using a dataset of popular celebrities through the years (this work can be found <a href="http://cs.wheatonma.edu/RankingTimeline/landingPage/">here</a>) and this dataset will be what I use moving forward.
+
+            </p>
+            <p>
+                Task/Results:
+                <br />
+                This week was Spring Break, and the start of a new vein in the project, so I didn't assign myself any concrete tasks to complete or tackle. I familiarized myself with the Celebrity Dataset that I will be working with by looking at the various xml/excel data files provided by Professor Gousie (these can be located in the Celebrity Data Work folder). I did some reading on <a href="https://en.wikipedia.org/wiki/Cluster_analysis">kinds of clustering</a> and found an <a href="https://github.com/zeux/pugixml">XML parser for C++</a> that I've started to implement.
+            </p>
+            <p>
+                For next week I'd like to be able to read the XML data into C++ in a workable format, and figure out (or starting thinking about at least) what kind of data structure the data will need to be stored in in order to perform the necessary clustering calculations. 
+            </p>
+                <!-- (1) two routes: -any vis but give it a LOT of data (parallel coordinates)
+                                -calculate clusters (k-means? euclidian distances?) distance of each point to each other point and then you have a data structure that ranks them and then make dendogram or something like drawing lines from the center point of cluster to surrounding ones / flexible
+                                problems: calculate clusters
+                                problems2: then how do you visualize
+                                actors dataset from gousie
+
+                    use what to calculate clusters? -Minitab -R
+
+                    need data structure to store data
+                    need to output clusters in some way >> this relates to how i want to do the visualization
+                    want the user to be able to choose level at which to see clusters (how similar they need to be to register as cluster) -->
         </div>
     </body>
 </html>
