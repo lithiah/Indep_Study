@@ -30,6 +30,8 @@
 		D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		D52C18821CA42B84004FEAB5 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		D52C18831CA42B84004FEAB5 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		D55CD5F71CA6F2EE007B0490 /* MovieStars1927to2013.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MovieStars1927to2013.xml; sourceTree = "<group>"; };
+		D55CD5F81CA6F2EE007B0490 /* numatt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = numatt.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				D52C18781CA42B78004FEAB5 /* main.cpp */,
+				D55CD5F71CA6F2EE007B0490 /* MovieStars1927to2013.xml */,
+				D55CD5F81CA6F2EE007B0490 /* numatt.xml */,
 				D52C187F1CA42B84004FEAB5 /* masterkey.xml */,
 				D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */,
 				D52C18821CA42B84004FEAB5 /* pugixml.cpp */,
@@ -249,6 +253,7 @@
 				D52C187E1CA42B78004FEAB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
