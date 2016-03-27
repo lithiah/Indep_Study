@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 //object to hold actor info in
 class Actor {
@@ -34,13 +35,24 @@ Actor::Actor(std::string Name, std::string Gender, std::string Race, int Age, in
     firstYear = FirstYear;
 }
 
-int main() {
-    std::vector<Actor*> actors; //vector to hold all actor objects
-    
-    //doc tree of XML & exit if it doesn't load
+void printActors(std::map<int, Actor*>* actorsMap) {
+    typedef std::map<int, Actor*>::iterator it_type;
+    for(it_type iterator = actorsMap->begin(); iterator != actorsMap->end(); iterator++) {
+        std::cout << iterator->first << ": " << iterator->second->name << std::endl;
+    }
+}
+
+int mapActorsToKey(std::map<int, Actor*>* actorsMap) {
+    //doc tree of actors XML & exit if it doesn't load
     pugi::xml_document doc;
-    if (!doc.load_file("MovieStars1927to2013.xml")) return -1;
+    if (!doc.load_file("MovieStars1927to2013.xml")) return 0;
     pugi::xml_node root = doc.child("Root");
+    //doc tree of keys
+    pugi::xml_document doc2;
+    if (!doc2.load_file("numatt.xml")) return 0;
+    pugi::xpath_node keySearch; //xpath object to find key
+    std::string keyQuery; //query for xpath containing actor name we want
+    int keyVal; //value of key associated with that actor
     
     //reuse vars for creating actor loop
     std::string name;
@@ -52,25 +64,35 @@ int main() {
     for (pugi::xml_node row = root.first_child(); row; row = row.next_sibling()) {
         //create each actor
         for (pugi::xml_node star = row.first_child().first_child(); star; star = star.next_sibling()) {
-            //pull values out from XML tree
+            //pull values out from doc1 XML tree
             name = star.first_child().first_child().value();
             gender = star.first_child().next_sibling().first_child().value();
             race = star.first_child().next_sibling().next_sibling().first_child().value();
             age = atoi(star.first_child().next_sibling().next_sibling().next_sibling().first_child().value());
             firstYear = atoi(row.first_child().attribute("title").value());
             //push new actor to actors vector
-            actors.push_back(new Actor(name, gender, race, age, firstYear));
+            
+            //generate keySearch string
+            keyQuery = "//TITLE[contains(NAME, '";
+            keyQuery.append(name); //name of actor
+            keyQuery.append("')]");
+    
+            //get key for actor name and turn to int
+            keySearch = doc2.select_node(&keyQuery[0]); //finds <NAME>actor</NAME> in doc2
+            keyVal = atoi(keySearch.node().first_child().next_sibling().first_child().value()); //gets key
+            
+            actorsMap->insert(std::pair<int,Actor*>(keyVal, new Actor(name, gender, race, age, firstYear)));
         }
     }
+    return 1;
+}
+
+int main() {
+    std::map <int, Actor*> actorsMap;
     
-    //print out all actors
-    for (int i=0; i<actors.size(); i++) {
-        std::cout << actors[i]->name << "...";
-        std::cout << actors[i]->gender << "...";
-        std::cout << actors[i]->race << "...";
-        std::cout << actors[i]->age << "...";
-        std::cout << actors[i]->firstYear << std::endl;
-    }
+    if (!(mapActorsToKey(&actorsMap))) return -1; //load actors and keys into map, exit if XML loading errors
     
+    printActors(&actorsMap); //print out key:actor pairs
+
     return 0;
 }

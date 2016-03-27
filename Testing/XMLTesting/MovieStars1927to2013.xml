@@ -39,7 +39,7 @@
 		   <Age>34</Age>
 		</Star>
 		<Star>
-		   <Name>Gibson, H</Name>
+		   <Name>Gibson H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -149,7 +149,7 @@
 		   <Age>28</Age>
 		</Star>
 		<Star>
-		   <Name>Gibson, H</Name>
+		   <Name>Gibson H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -161,7 +161,7 @@
 		   <Age>28</Age>
 		</Star>
 		<Star>
-		   <Name>Rogers, B</Name>
+		   <Name>Rogers B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>24</Age>
@@ -371,7 +371,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Rogers, W</Name>
+		   <Name>Rogers W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>53</Age>
@@ -393,7 +393,7 @@
 		   <Age>63</Age>
 		</Star>
 		<Star>
-		   <Name>Rogers, W</Name>
+		   <Name>Rogers W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>53</Age>
@@ -451,7 +451,7 @@
 	<Row>
 		<Year title = "1934">
 		<Star>
-		   <Name>Rogers, W</Name>
+		   <Name>Rogers W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>53</Age>
@@ -521,7 +521,7 @@
 		   <Age>6</Age>
 		</Star>
 		<Star>
-		   <Name>Rogers, W</Name>
+		   <Name>Rogers W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>53</Age>
@@ -597,7 +597,7 @@
 		   <Age>0</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, R</Name>
+		   <Name>Taylor R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>25</Age>
@@ -655,7 +655,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, R</Name>
+		   <Name>Taylor R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>25</Age>
@@ -737,7 +737,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, R</Name>
+		   <Name>Taylor R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>25</Age>
@@ -1209,7 +1209,7 @@
 		   <Age>18</Age>
 		</Star>
 		<Star>
-		   <Name>O'Brien</Name>
+		   <Name>OBrien</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>8</Age>
@@ -1261,7 +1261,7 @@
 		   <Age>34</Age>
 		</Star>
 		<Star>
-		   <Name>O'Brien</Name>
+		   <Name>OBrien</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>8</Age>
@@ -1273,7 +1273,7 @@
 		   <Age>26</Age>
 		</Star>
 		<Star>
-		   <Name>Rogers, R</Name>
+		   <Name>Rogers R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>34</Age>
@@ -1453,7 +1453,7 @@
 		   <Age>26</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, E</Name>
+		   <Name>Williams E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -1517,7 +1517,7 @@
 		   <Age>59</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, E</Name>
+		   <Name>Williams E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -1801,7 +1801,7 @@
 		   <Age>42</Age>
 		</Star>
 		<Star>
-		   <Name>Kelly, G</Name>
+		   <Name>Kelly G</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>27</Age>
@@ -1993,7 +1993,7 @@
 		   <Age>40</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2075,7 +2075,7 @@
 		   <Age>27</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, D</Name>
+		   <Name>Reynolds D</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>27</Age>
@@ -2133,13 +2133,13 @@
 		   <Age>40</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E </Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, D</Name>
+		   <Name>Reynolds D</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>27</Age>
@@ -2179,7 +2179,7 @@
 	<Row>
 		<Year title = "1961">
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2273,7 +2273,7 @@
 		   <Age>22</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2337,7 +2337,7 @@
 		   <Age>40</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2483,7 +2483,7 @@
 		   <Age>42</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2511,7 +2511,7 @@
 		   <Age>35</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2593,7 +2593,7 @@
 		   <Age>35</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2681,7 +2681,7 @@
 		   <Age>43</Age>
 		</Star>
 		<Star>
-		   <Name>Taylor, E</Name>
+		   <Name>Taylor E</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>26</Age>
@@ -2843,7 +2843,7 @@
 		   <Age>37</Age>
 		</Star>
 		<Star>
-		   <Name>Scott, G. C.</Name>
+		   <Name>Scott G. C.</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>44</Age>
@@ -2889,7 +2889,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Scott, G. C.</Name>
+		   <Name>Scott G. C.</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>44</Age>
@@ -2953,7 +2953,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>O'Neal, R</Name>
+		   <Name>ONeal R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>32</Age>
@@ -2965,7 +2965,7 @@
 		   <Age>37</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3041,7 +3041,7 @@
 		   <Age>37</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3111,13 +3111,13 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, W</Name>
+		   <Name>Allen W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -3169,7 +3169,7 @@
 		   <Age>50</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3181,13 +3181,13 @@
 		   <Age>34</Age>
 		</Star>
 		<Star>
-		   <Name>O'Neal, T</Name>
+		   <Name>ONeal T</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>13</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, W</Name>
+		   <Name>Allen W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -3221,7 +3221,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3233,7 +3233,7 @@
 		   <Age>36</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, W</Name>
+		   <Name>Allen W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -3267,7 +3267,7 @@
 	<Row>
 		<Year title = "1978">
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3297,7 +3297,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, W</Name>
+		   <Name>Allen W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -3331,7 +3331,7 @@
 	<Row>
 		<Year title = "1979">
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3349,7 +3349,7 @@
 		   <Age>41</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, W</Name>
+		   <Name>Allen W</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -3379,7 +3379,7 @@
 		   <Age>35</Age>
 		</Star>
 		<Star>
-		   <Name>Moore, R</Name>
+		   <Name>Moore R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>52</Age>
@@ -3395,7 +3395,7 @@
 	<Row>
 		<Year title = "1980">
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3449,7 +3449,7 @@
 		   <Age>27</Age>
 		</Star>
 		<Star>
-		   <Name>Martin, S</Name>
+		   <Name>Martin S</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>35</Age>
@@ -3459,7 +3459,7 @@
 	<Row>
 		<Year title = "1981">
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3471,7 +3471,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Moore, Dudley</Name>
+		   <Name>Moore Dudley</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>46</Age>
@@ -3489,7 +3489,7 @@
 		   <Age>41</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -3523,7 +3523,7 @@
 	<Row>
 		<Year title = "1982">
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3541,7 +3541,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Moore, Dudley</Name>
+		   <Name>Moore Dudley</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>46</Age>
@@ -3577,7 +3577,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -3605,7 +3605,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3623,7 +3623,7 @@
 		   <Age>32</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -3663,7 +3663,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -3681,7 +3681,7 @@
 		   <Age>34</Age>
 		</Star>
 		<Star>
-		   <Name>Reynolds, B</Name>
+		   <Name>Reynolds B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>37</Age>
@@ -3757,7 +3757,7 @@
 		   <Age>46</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -3949,7 +3949,7 @@
 		   <Age>43</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -3983,7 +3983,7 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4041,7 +4041,7 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4083,7 +4083,7 @@
 		   <Age>35</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -4111,13 +4111,13 @@
 		   <Age>38</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4217,7 +4217,7 @@
 		   <Age>40</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4239,7 +4239,7 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4251,13 +4251,13 @@
 		   <Age>36</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4315,13 +4315,13 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Allen, T</Name>
+		   <Name>Allen T</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>41</Age>
@@ -4345,7 +4345,7 @@
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Jones, T. L.</Name>
+		   <Name>Jones T. L.</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>48</Age>
@@ -4373,13 +4373,13 @@
 		   <Age>32</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4397,7 +4397,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Moore, Demi</Name>
+		   <Name>Moore Demi</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>33</Age>
@@ -4449,7 +4449,7 @@
 		   <Age>29</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4461,7 +4461,7 @@
 		   <Age>35</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -4483,13 +4483,13 @@
 	<Row>
 		<Year title = "1997">
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4501,7 +4501,7 @@
 		   <Age>23</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -4531,13 +4531,13 @@
 		   <Age>24</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
 		</Star>
 		<Star>
-		   <Name>Jones, T. L.</Name>
+		   <Name>Jones T. L.</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>48</Age>
@@ -4565,7 +4565,7 @@
 		   <Age>23</Age>
 		</Star>
 		<Star>
-		   <Name>Williams, R</Name>
+		   <Name>Williams R</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -4601,7 +4601,7 @@
 		   <Age>26</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4611,7 +4611,7 @@
 	<Row>
 		<Year title = "1999">
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4647,7 +4647,7 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -4681,7 +4681,7 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4729,7 +4729,7 @@
 		   <Age>32</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -4751,7 +4751,7 @@
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4775,7 +4775,7 @@
 		   <Age>47</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -4827,13 +4827,13 @@
 		   <Age>26</Age>
 		</Star>
 		<Star>
-		   <Name>DiCaprio </Name>
+		   <Name>DiCaprio</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
 		</Star>
 		<Star>
-		   <Name>Kidman </Name>
+		   <Name>Kidman</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>34</Age>
@@ -4891,7 +4891,7 @@
 		   <Age>21</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -4967,13 +4967,13 @@
 		   <Age>47</Age>
 		</Star>
 		<Star>
-		   <Name>Roberts, J</Name>
+		   <Name>Roberts J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -5031,7 +5031,7 @@
 		   <Age>39</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -5071,7 +5071,7 @@
 		   <Age>23</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -5129,7 +5129,7 @@
 		   <Age>40</Age>
 		</Star>
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -5187,7 +5187,7 @@
 	<Row>
 		<Year title = "2008">
 		<Star>
-		   <Name>Smith, W</Name>
+		   <Name>Smith W</Name>
 		   <Gender>M</Gender>
 		   <Race>B</Race>
 		   <Age>27</Age>
@@ -5211,7 +5211,7 @@
 		   <Age>22</Age>
 		</Star>
 		<Star>
-		   <Name>Ford, H</Name>
+		   <Name>Ford H</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>39</Age>
@@ -5241,7 +5241,7 @@
 		   <Age>31</Age>
 		</Star>
 		<Star>
-		   <Name>Craig </Name>
+		   <Name>Craig</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>40</Age>
@@ -5415,7 +5415,7 @@
 		   <Age>29</Age>
 		</Star>
 		<Star>
-		   <Name>Cooper, B</Name>
+		   <Name>Cooper B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
@@ -5507,7 +5507,7 @@
 	<Row>
 		<Year title = "2013">
 		<Star>
-		   <Name>Lawrence, J</Name>
+		   <Name>Lawrence J</Name>
 		   <Gender>F</Gender>
 		   <Race>W</Race>
 		   <Age>23</Age>
@@ -5519,7 +5519,7 @@
 		   <Age>29</Age>
 		</Star>
 		<Star>
-		   <Name>Cooper, B</Name>
+		   <Name>Cooper B</Name>
 		   <Gender>M</Gender>
 		   <Race>W</Race>
 		   <Age>36</Age>
