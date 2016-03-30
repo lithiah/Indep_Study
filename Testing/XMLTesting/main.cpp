@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 
+// *************** ACTOR XML STUFF ************** //
 //object to hold actor info in
 class Actor {
 public:
@@ -35,6 +36,7 @@ Actor::Actor(std::string Name, std::string Gender, std::string Race, int Age, in
     firstYear = FirstYear;
 }
 
+//print out each actor and corresponding key
 void printActors(std::map<int, Actor*>* actorsMap) {
     typedef std::map<int, Actor*>::iterator it_type;
     for(it_type iterator = actorsMap->begin(); iterator != actorsMap->end(); iterator++) {
@@ -42,6 +44,7 @@ void printActors(std::map<int, Actor*>* actorsMap) {
     }
 }
 
+//get actor details and key, map together
 int mapActorsToKey(std::map<int, Actor*>* actorsMap) {
     //doc tree of actors XML & exit if it doesn't load
     pugi::xml_document doc;
@@ -88,6 +91,7 @@ int mapActorsToKey(std::map<int, Actor*>* actorsMap) {
     return 1;
 }
 
+//load years Actor is ranked into actor objects
 int loadYears(std::map<int, Actor*>* actorsMap) {
     pugi::xml_document doc;
     if (!doc.load_file("masterkey.xml")) return 0;
@@ -113,14 +117,41 @@ int loadYears(std::map<int, Actor*>* actorsMap) {
     return 1;
 }
 
+void constructVectors(std::map<int, Actor*>* actorsMap, std::map<int, std::vector<int>*>* vectorsMap) {
+    typedef std::map<int, Actor*>::iterator it_type;
+    
+//    vars for looping
+//    int actorKey;
+    
+    for(it_type iterator = actorsMap->begin(); iterator != actorsMap->end(); iterator++) {
+        std::cout << iterator->first << ": " << iterator->second->name << std::endl;
+        vectorsMap->insert(std::pair<int, std::vector<int>*>(iterator->first, new std::vector<int>));
+        //add
+        (*vectorsMap)[iterator->first]->push_back(iterator->second->firstYear);
+    }
+}
+
+void printVectors(std::map<int, std::vector<int>*>* vectorsMap) {
+    typedef std::map<int, std::vector<int>*>::iterator it_type;
+    for(it_type iterator = vectorsMap->begin(); iterator != vectorsMap->end(); iterator++) {
+        std::cout << iterator->first << ": " << iterator->second->front() << std::endl;
+    }
+}
+
+// *************** ACTOR XML STUFF ************** //
+
 int main() {
     std::map <int, Actor*> actorsMap;
+    std::map <int, std::vector<int>*> vectorsMap;
     
+    //load up data from XML
     if (!(mapActorsToKey(&actorsMap))) return -1; //load actors and keys into map, exit if XML loading errors
-    
 //    printActors(&actorsMap); //print out key:actor pairs
-    
     if (!(loadYears(&actorsMap))) return -1; //load year rankings into actor objects, exit if XML loading errors
+    
+    //generate vectors for clusters
+    constructVectors(&actorsMap, &vectorsMap);
+    printVectors(&vectorsMap);
 
     return 0;
 }
