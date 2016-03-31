@@ -217,17 +217,28 @@
             <p>
                 For next week I'd like to be able to read the XML data into C++ in a workable format, and figure out (or starting thinking about at least) what kind of data structure the data will need to be stored in in order to perform the necessary clustering calculations.
             </p>
-                <!-- (1) two routes: -any vis but give it a LOT of data (parallel coordinates)
-                                -calculate clusters (k-means? euclidian distances?) distance of each point to each other point and then you have a data structure that ranks them and then make dendogram or something like drawing lines from the center point of cluster to surrounding ones / flexible
-                                problems: calculate clusters
-                                problems2: then how do you visualize
-                                actors dataset from gousie
+        </div>
 
-                    use what to calculate clusters? -Minitab -R
+        <div class="week">
+            <h2>Week 8</h2>
+            <p>
+                Task:
+                <br />
+                (1) Write code to import actor data to C++.
+                <br />
+                (2) Figure out what data structure to use for clustering calculations.
+            </p>
+            <p>
+                I wrote C++ code using this <a href="https://github.com/zeux/pugixml">XML parser</a> that imports the actor XML data into C++. The actor data is unique in that it's broken up among different XML files, so I had to write specific functions for these. Below is the function which gets the actor key and name from one XML file, then maps the key to an actor object containing information about the actor that's looked up in another XML file.
+                <br />
+                <img src="Images/mapActorsToKey.png" />
+                <br />
+                Ideally this project will allow users to upload their own XML. The code for this however will be a different set of functions, because we will have standardized guildlines for how the XML should be formatted. This way we can generalize the code for all XML files structured in a certain way. This will integrate with the user interface end.
+            </p>
+            <p>
+                In terms of what data structure to use, my current idea is to use a map. The map will go from key -> an object, which will contain the name of the object, and a vector which holds all the attributes we'd want to cluster by. Then, to perform clustering, we'd first have the user state which attributes to include in the clustering. When calculating distances, we'd only look at/calculate into the distance the indices in the vector which correspond to the chosen attributes. This way we won't have to regenerate a new vector for each configuration of attributes.
+            </p>
 
-                    need data structure to store data
-                    need to output clusters in some way >> this relates to how i want to do the visualization
-                    want the user to be able to choose level at which to see clusters (how similar they need to be to register as cluster) -->
         </div>
     </body>
 </html>
