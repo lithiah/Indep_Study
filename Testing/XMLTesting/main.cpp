@@ -21,7 +21,7 @@ public:
     std::string race;
     int age;
     int firstYear;
-    int yearRank[200] = {0}; //array of years where index in year starting 0 = 1924, and value is rank during that year, 0 if not ranked at all {issue with 0 being closer to 1 than 10}
+    int yearRank[85] = {0}; //array of years where index in year starting 0 = 1924, and value is rank during that year, 0 if not ranked at all {issue with 0 being closer to 1 than 10}
     
     Actor(std::string Name, std::string Gender, std::string Race, int Age, int firstYear); //constructor
 };
@@ -117,7 +117,7 @@ int loadYears(std::map<int, Actor*>* actorsMap) {
     return 1;
 }
 
-void constructVectors(std::map<int, Actor*>* actorsMap, std::map<int, std::vector<int>*>* vectorsMap) {
+void constructVectors(std::map<int, Actor*>* actorsMap, std::map<int, std::vector<int> >* vectorsMap) {
     typedef std::map<int, Actor*>::iterator it_type;
     
 //    vars for looping
@@ -125,16 +125,28 @@ void constructVectors(std::map<int, Actor*>* actorsMap, std::map<int, std::vecto
     
     for(it_type iterator = actorsMap->begin(); iterator != actorsMap->end(); iterator++) {
         std::cout << iterator->first << ": " << iterator->second->name << std::endl;
-        vectorsMap->insert(std::pair<int, std::vector<int>*>(iterator->first, new std::vector<int>));
+        vectorsMap->insert(std::pair<int, std::vector<int>>(iterator->first, *new std::vector<int>));
         //add
-        (*vectorsMap)[iterator->first]->push_back(iterator->second->firstYear);
+        
+        (*vectorsMap)[iterator->first].push_back(iterator->second->age);
+        (*vectorsMap)[iterator->first].push_back(iterator->second->firstYear);
+        
+        for (int i=0; i<86; i++) {
+            (*vectorsMap)[iterator->first].push_back(iterator->second->yearRank[i]);
+        }
+
+        
     }
 }
 
-void printVectors(std::map<int, std::vector<int>*>* vectorsMap) {
-    typedef std::map<int, std::vector<int>*>::iterator it_type;
+void printVectors(std::map<int, std::vector<int>>* vectorsMap) {
+    typedef std::map<int, std::vector<int>>::iterator it_type;
     for(it_type iterator = vectorsMap->begin(); iterator != vectorsMap->end(); iterator++) {
-        std::cout << iterator->first << ": " << iterator->second->front() << std::endl;
+        std::cout << iterator->first << ": ";
+        for (int i=0; i<85; i++) {
+            std::cout << &(iterator->second[i]) << ", ";
+        }
+        std::cout << std::endl;
     }
 }
 
@@ -142,7 +154,7 @@ void printVectors(std::map<int, std::vector<int>*>* vectorsMap) {
 
 int main() {
     std::map <int, Actor*> actorsMap;
-    std::map <int, std::vector<int>*> vectorsMap;
+    std::map <int, std::vector<int>> vectorsMap;
     
     //load up data from XML
     if (!(mapActorsToKey(&actorsMap))) return -1; //load actors and keys into map, exit if XML loading errors
@@ -151,7 +163,9 @@ int main() {
     
     //generate vectors for clusters
     constructVectors(&actorsMap, &vectorsMap);
-    printVectors(&vectorsMap);
-
+//    printVectors(&vectorsMap);
+    
+    std::cout << (vectorsMap[4])[0];
+    
     return 0;
 }
