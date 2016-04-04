@@ -139,33 +139,68 @@ void constructVectors(std::map<int, Actor*>* actorsMap, std::map<int, std::vecto
     }
 }
 
-void printVectors(std::map<int, std::vector<int>>* vectorsMap) {
+// *************** END ACTOR XML STUFF ************** //
+
+// *************** GENERALIZED XML LOADING ************** //
+void loadVectors(std::map<int, std::vector<int>>* vectorsMap, int numberOfAttributes) {
+    pugi::xml_document doc;
+    doc.load_file("masterkey.xml");
+    pugi::xml_node root = doc.child("Root");
+    
+    int j = 0;
+    pugi::xml_node attr;
+    std::vector<int>* currentVector;
+    
+    for (pugi::xml_node title = root.first_child(); title; title = title.next_sibling()) {
+        
+        attr = title.first_child();
+        currentVector = new std::vector<int>;
+        
+        for (int i=0; i< numberOfAttributes; i++) {
+            
+            
+            currentVector->push_back(atoi(attr.first_child().value()));
+            
+            attr = attr.next_sibling();
+        }
+        
+        (*vectorsMap)[j] = *currentVector;
+        j = j+1;
+    }
+}
+
+void printVectors(std::map<int, std::vector<int>>* vectorsMap, int numberOfAttributes) {
     typedef std::map<int, std::vector<int>>::iterator it_type;
     for(it_type iterator = vectorsMap->begin(); iterator != vectorsMap->end(); iterator++) {
         std::cout << iterator->first << ": ";
-        for (int i=0; i<85; i++) {
-            std::cout << &(iterator->second[i]) << ", ";
+        for (int i=0; i<numberOfAttributes; i++) {
+            std::cout << iterator->second[i] << ", ";
         }
         std::cout << std::endl;
     }
 }
 
-// *************** ACTOR XML STUFF ************** //
-
 int main() {
-    std::map <int, Actor*> actorsMap;
-    std::map <int, std::vector<int>> vectorsMap;
+//    std::map <int, Actor*> actorsMap;
+//    std::map <int, std::vector<int>> vectorsMap;
+//    
+//    //load up data from XML
+//    if (!(mapActorsToKey(&actorsMap))) return -1; //load actors and keys into map, exit if XML loading errors
+////    printActors(&actorsMap); //print out key:actor pairs
+//    if (!(loadYears(&actorsMap))) return -1; //load year rankings into actor objects, exit if XML loading errors
+//    
+//    //generate vectors for clusters
+//    constructVectors(&actorsMap, &vectorsMap);
+////    printVectors(&vectorsMap);
+//    
+//    std::cout << (vectorsMap[4])[0];
+
+    std::map<int, std::vector<int>> vectorsMap;
+    int numberOfAttributes = 11;
+    std::string name;
     
-    //load up data from XML
-    if (!(mapActorsToKey(&actorsMap))) return -1; //load actors and keys into map, exit if XML loading errors
-//    printActors(&actorsMap); //print out key:actor pairs
-    if (!(loadYears(&actorsMap))) return -1; //load year rankings into actor objects, exit if XML loading errors
-    
-    //generate vectors for clusters
-    constructVectors(&actorsMap, &vectorsMap);
-//    printVectors(&vectorsMap);
-    
-    std::cout << (vectorsMap[4])[0];
+    loadVectors(&vectorsMap, numberOfAttributes);
+    printVectors(&vectorsMap, numberOfAttributes);
     
     return 0;
 }
