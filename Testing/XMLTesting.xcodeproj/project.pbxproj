@@ -26,12 +26,10 @@
 /* Begin PBXFileReference section */
 		D52C18751CA42B78004FEAB5 /* XMLTesting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XMLTesting; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52C18781CA42B78004FEAB5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D52C187F1CA42B84004FEAB5 /* masterkey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = masterkey.xml; sourceTree = "<group>"; };
 		D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		D52C18821CA42B84004FEAB5 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		D52C18831CA42B84004FEAB5 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
-		D55CD5F71CA6F2EE007B0490 /* MovieStars1927to2013.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MovieStars1927to2013.xml; sourceTree = "<group>"; };
-		D55CD5F81CA6F2EE007B0490 /* numatt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = numatt.xml; sourceTree = "<group>"; };
+		D5D48AD21CB2BC130029D0D7 /* actorsData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = actorsData.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +62,8 @@
 		D52C18771CA42B78004FEAB5 /* XMLTesting */ = {
 			isa = PBXGroup;
 			children = (
+				D5D48AD21CB2BC130029D0D7 /* actorsData.xml */,
 				D52C18781CA42B78004FEAB5 /* main.cpp */,
-				D55CD5F71CA6F2EE007B0490 /* MovieStars1927to2013.xml */,
-				D55CD5F81CA6F2EE007B0490 /* numatt.xml */,
-				D52C187F1CA42B84004FEAB5 /* masterkey.xml */,
 				D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */,
 				D52C18821CA42B84004FEAB5 /* pugixml.cpp */,
 				D52C18831CA42B84004FEAB5 /* pugixml.hpp */,
