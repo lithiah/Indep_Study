@@ -120,28 +120,9 @@ void Clusters::iterateAssignmentStep(std::map<int, std::vector<float>> data, std
             }
         }
     }//assigned cluster to each point
-    
-    float n = 0;
-    
+    std::vector<float> newCentroid;
     //2: calculate new centroid for each cluster
-    //for each point add dimension values to centroid
-    //first clear centroids
-    
-    //add each point to corresponding centroid
-    for (int i=0; i<data.size(); i++) {
-        //for each dimension
-        n = n + 1;
-        for (int j=0; j<data[i].size(); j++){
-            if (activeDimensions[j]) {
-                centroids[clusterAssignments[i]][j] = centroids[clusterAssignments[i]][j] + data[i][j];
-            }
-        }
-    }
-    for (int i=0; i<centroids.size(); i++) {
-        for (int j=0; j<centroids[0].size(); j++) {
-            centroids[i][j] = centroids[i][j] / n;
-        }
-    }
+    //for each cluster
 }
 
 
