@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "math.h"
 
 // ***************** LOAD AND READ DATA ***************** //
 void loadVectors(std::map<int, std::vector<float>>* vectorsMap, std::string fileName, int numberOfAttributes) {
@@ -62,13 +63,17 @@ class Clusters {
 public:
     std::map<int, std::vector<float>> data;
     
+    std::vector<int> activeDimensions; //which dimensions (ie attributes) to include in calculations
+    
+    std::map<int, int> clusterAssignments; //each point by mapped id assigned to cluster
     int numberOfClusters; //how many clusters to use, should match centroids.size()
-    std::vector<int> centroids; //vector containing id's of points to use as cluster centroid
-    std::vector<int> means; //vector in same order as centroids containing their means
+    std::vector<std::vector<float>> centroids; //vectors of each cluster centroid (list of vectors)
     
     Clusters(std::map<int, std::vector<float>> Data, int NumberOfClusters); //constructor
-    float generateMean(std::vector<float> point, std::vector<int> activeDimensions);
-    float sumOfSquares(std::vector<float> point, float mean, std::vector<int> activeDimensions);
+    float generateCentroid(std::map<int, std::vector<float>> data, std::vector<int> activeDimensions);
+    float distance(std::vector<float> point, std::vector<float> centroid, std::vector<int> activeDimensions);
+    void setupClusters(std::map<int, std::vector<float>> data, std::vector<std::vector<float>> centroids, int numberOfClusters);
+    void iterateAssignmentStep(std::map<int, std::vector<float>> data, std::map<int, int> clusterAssignments, std::vector<std::vector<float>> centroids, std::vector<int> activeDimensions);
 };
 
 Clusters::Clusters(std::map<int, std::vector<float>> Data, int NumberOfClusters) {
@@ -76,27 +81,48 @@ Clusters::Clusters(std::map<int, std::vector<float>> Data, int NumberOfClusters)
     numberOfClusters = NumberOfClusters;
 }
 
-float Clusters::generateMean(std::vector<float> point, std::vector<int> activeDimensions) {
-    float mean = 0;
-    float n = 0;
-    for (int i = 0; i < point.size(); i++) {
-        if (activeDimensions[i]) {
-            mean = mean + point[i];
-            n = n + 1;
-        }
-    }
-    mean = mean / n;
-    return mean;
+float Clusters::generateCentroid(std::map<int, std::vector<float>> data, std::vector<int> activeDimensions) {
+    return 2.3;
 }
 
-float Clusters::sumOfSquares(std::vector<float> point, float mean, std::vector<int> activeDimensions) {
-    float sumOfSquares = 0;
+float Clusters::distance(std::vector<float> point, std::vector<float> centroid, std::vector<int> activeDimensions) {
+    float distance = 0;
     for (int i = 0; i < point.size(); i++) {
         if (activeDimensions[i]) {
-            sumOfSquares = sumOfSquares + (sumOfSquares + (point[i] - mean)) * (sumOfSquares + (point[i] - mean));
+            distance = distance + pow(point[i]-centroid[i], 2); //add squared difference from point to centroid
         }
     }
-    return sumOfSquares;
+    return sqrt(distance);
+}
+
+void Clusters::setupClusters(std::map<int, std::vector<float>> data, std::vector<std::vector<float>> centroids, int numberOfClusters) {
+    //assign inital clusters based on first n data points [!! WILL CHANGE THIS]
+    
+    for (int i=0; i<numberOfClusters; i++) {
+        centroids.push_back(data[i]);
+    }
+}
+
+void Clusters::iterateAssignmentStep(std::map<int, std::vector<float>> data, std::map<int, int> clusterAssignments, std::vector<std::vector<float>> centroids, std::vector<int> activeDimensions) {
+    //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
+    int closestCluster;
+    float minDistance = 1000000000000;
+    float newDistance;
+    //for each point
+    for (int i=0; i<data.size(); i++) {
+        closestCluster = 0;
+        //for each cluster
+        for (int j=0; j<centroids.size(); j++) {
+            newDistance = distance(data[i], centroids[i], activeDimensions);
+            if (newDistance < minDistance) {
+                closestCluster = j;
+                minDistance = newDistance;
+            }
+        }
+    }//assigned cluster to each point
+    std::vector<float> newCentroid;
+    //2: calculate new centroid for each cluster
+    //for each cluster
 }
 
 
