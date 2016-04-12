@@ -240,7 +240,22 @@
             <p>
                 In terms of what data structure to use, my current idea is to use a map. The map will go from key -> an object, which will contain the name of the object, and a vector which holds all the attributes we'd want to cluster by. Then, to perform clustering, we'd first have the user state which attributes to include in the clustering. When calculating distances, we'd only look at/calculate into the distance the indices in the vector which correspond to the chosen attributes. This way we won't have to regenerate a new vector for each configuration of attributes.
             </p>
+        </div>
 
+        <div class="week">
+            <h2>Weeks 9/10</h2>
+            <p>
+                Task:
+                <br />
+                (1) Write clustering class
+                <br />
+                (2) Implement threading
+            </p>
+            <p>
+                Results:
+                <br />
+                I wrote the cluster class and implemented my own version of the algorithm with a sequential version of the iterations or a parallel version which does the distance calculations in parallel with two threads. I saw an few available kmeans implementations available online, however none of these offered the ability to import data from an XML file, nor the flexibility to choose which dimensions of a data point to include in calculations. I specifically want these to be user-specified parameters, as the idea is to allow a user to upload their own XML online and see the resulting cluster visualization. 
+            </p>
         </div>
     </body>
 </html>
