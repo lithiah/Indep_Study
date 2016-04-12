@@ -97,7 +97,10 @@ private:
     //complete one sequential iteration of assignment
     void seqAssignmentStep();
     //complete one parallel iteration of assignment
-    static void* parAssignmentStep(void* arg);
+    static void* parAssignmentStep1(void* arg);
+    static void* parAssignmentStep2(void* arg);
+    //calculate centroids after assignments
+    void calculateCentroids();
 };
 
 
@@ -118,7 +121,7 @@ float Clusters::distance(std::vector<float> point, std::vector<float> centroid) 
 }
 
 void Clusters::setupClusters() {
-    //assign inital clusters based on first n data points [!! WILL CHANGE THIS]
+    //assign inital clusters based on first n data points [!! WILL CHANGE THIS??]
     
     for (int i=0; i<numberOfClusters; i++) {
         centroids.push_back(data[i]);
@@ -137,51 +140,44 @@ void Clusters::printClusterAssignments() {
 void Clusters::runSequential(int maxIterations) {
     for (int i=0; i<maxIterations; i++) {
         seqAssignmentStep();
+        calculateCentroids();
     }
 }
 
 void Clusters::runParallel(int maxIterations) {
     pthread_t thread1, thread2;
     
-    pthread_create(&thread1, 0, parAssignmentStep, this);
-//    pthread_create(&thread2, 0, parAssignmentStep, this);
-    pthread_join(thread1, 0);
-    std::cout << "All done with thread1." << std::endl;
-//    pthread_join(thread2, 0);
-//    std::cout << "All done with thread2." << std::endl;
+    for (int i=0; i<maxIterations; i++) {
+        pthread_create(&thread1, 0, parAssignmentStep1, this);
+        pthread_create(&thread2, 0, parAssignmentStep2, this);
+        pthread_join(thread1, 0);
+        pthread_join(thread2, 0);
+        
+        calculateCentroids();
+    }
 }
 
-void* Clusters::parAssignmentStep(void* arg) {
-    Clusters* x = static_cast<Clusters*>(arg);
+void* Clusters::parAssignmentStep1(void* arg) {
+    Clusters* x = static_cast<Clusters*>(arg); //reference to current class object
     
-    // do whatever the thread needs to do, and use the 'mw' as a reference to your class object.
+    int endPoint = int(x->data.size())/2;
     
     //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
     int closestCluster;
     float minDistance;
     float newDistance;
     //for each point
-    for (int i=0; i<x->data.size(); i++) {
+    for (int i=0; i<endPoint; i++) {
         closestCluster = 0;
         minDistance = 1000000000;
         //for each cluster
         for (int j=0; j<x->centroids.size(); j++) {
-            
-                        std::cout << "data[i] (x,y): " << x->data[i][0] << ", " << x->data[i][1] << std::endl;
-                        std::cout << "centroids[j] (x,y): " << x->centroids[j][0] << ", " << x->centroids[j][1] << std::endl;
-            
             newDistance = x->distance(x->data[i], x->centroids[j]);
             
-                        std::cout << "newDistance: " << newDistance << std::endl;
-                        std::cout << "minDistance: " << minDistance << std::endl;
-            
             if (newDistance < minDistance) {
-                                std::cout << "Reassigning to newDistance" << std::endl;
                 closestCluster = j;
                 minDistance = newDistance;
             }
-            
-                        std::cout << std::endl << "---------------------" << std::endl << std::endl;
         }
         
         x->clusterAssignments[i] = closestCluster;
@@ -190,6 +186,38 @@ void* Clusters::parAssignmentStep(void* arg) {
 
     return 0;
 }
+
+void* Clusters::parAssignmentStep2(void* arg) {
+    Clusters* x = static_cast<Clusters*>(arg); //reference to current class object
+    
+    int startPoint = int((x->data.size()/2));
+    
+    //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
+    int closestCluster;
+    float minDistance;
+    float newDistance;
+    //for each point
+    for (int i=startPoint; i<x->data.size(); i++) {
+        closestCluster = 0;
+        minDistance = 1000000000;
+        //for each cluster
+        for (int j=0; j<x->centroids.size(); j++) {
+            
+            newDistance = x->distance(x->data[i], x->centroids[j]);
+            
+            if (newDistance < minDistance) {
+                closestCluster = j;
+                minDistance = newDistance;
+            }
+        }
+        
+        x->clusterAssignments[i] = closestCluster;
+        
+    }//assigned cluster to each point
+    
+    return 0;
+}
+
 
 void Clusters::seqAssignmentStep() {
     //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
@@ -202,28 +230,19 @@ void Clusters::seqAssignmentStep() {
         minDistance = 1000000000;
         //for each cluster
         for (int j=0; j<centroids.size(); j++) {
-            
-            //            std::cout << "data[i] (x,y): " << data[i][0] << ", " << data[i][1] << std::endl;
-            //            std::cout << "centroids[j] (x,y): " << centroids[j][0] << ", " << centroids[j][1] << std::endl;
-            
             newDistance = distance(data[i], centroids[j]);
             
-            //            std::cout << "newDistance: " << newDistance << std::endl;
-            //            std::cout << "minDistance: " << minDistance << std::endl;
-            
             if (newDistance < minDistance) {
-                //                std::cout << "Reassigning to newDistance" << std::endl;
                 closestCluster = j;
                 minDistance = newDistance;
             }
-            
-            //            std::cout << std::endl << "---------------------" << std::endl << std::endl;
         }
         
         clusterAssignments[i] = closestCluster;
-        
     }//assigned cluster to each point
-    
+}
+
+void Clusters::calculateCentroids() {
     //2: calculate new centroid for each cluster
     //for each point add dimension values to centroid
     
@@ -236,7 +255,6 @@ void Clusters::seqAssignmentStep() {
             centroids[i][j] = 0;
         }
     }
-    
     
     //add each point to corresponding centroid
     for (int i=0; i<data.size(); i++) {
@@ -271,16 +289,25 @@ int main() {
     int maxIterations = 10;
     
     loadVectors(&vectorsMap, fileName, numberOfAttributes);
-    populateActiveDimensions(&activeDimensions, numberOfAttributes); //use all
+//    populateActiveDimensions(&activeDimensions, numberOfAttributes); //use all
     
-    Clusters testCase = Clusters(/*data*/ vectorsMap, /*number of clusters*/ 3, /*which dims to use */ activeDimensions);
+    activeDimensions.push_back(0);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    activeDimensions.push_back(1);
+    
+    Clusters testCase = Clusters(/*data*/ vectorsMap, /*number of clusters*/ 2, /*which dims to use */ activeDimensions);
     testCase.setupClusters();
     
-//    testCase.runSequential(maxIterations);
-//    testCase.printClusterAssignments();
-    
-    testCase.runParallel(maxIterations);
+    testCase.runSequential(maxIterations);
     testCase.printClusterAssignments();
+    
+//    testCase.runParallel(maxIterations);
+//    testCase.printClusterAssignments();
     
     return 0;
 }
