@@ -29,6 +29,7 @@
 		D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		D52C18821CA42B84004FEAB5 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		D52C18831CA42B84004FEAB5 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		D5300F961CBC72A400C7B437 /* testFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testFile.xml; sourceTree = "<group>"; };
 		D5D48AD21CB2BC130029D0D7 /* actorsData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = actorsData.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +65,7 @@
 			children = (
 				D5D48AD21CB2BC130029D0D7 /* actorsData.xml */,
 				D52C18781CA42B78004FEAB5 /* main.cpp */,
+				D5300F961CBC72A400C7B437 /* testFile.xml */,
 				D52C18811CA42B84004FEAB5 /* pugiconfig.hpp */,
 				D52C18821CA42B84004FEAB5 /* pugixml.cpp */,
 				D52C18831CA42B84004FEAB5 /* pugixml.hpp */,

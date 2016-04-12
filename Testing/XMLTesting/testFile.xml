@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Root>
+    <point>
+        <x>1</x>
+        <y>1</y>
+        <z>0</z>
+    </point>
+    <point>
+        <x>2</x>
+        <y>1</y>
+        <z>0</z>
+    </point>
+    <point>
+        <x>4</x>
+        <y>3</y>
+        <z>0</z>
+    </point>
+    <point>
+        <x>5</x>
+        <y>4</y>
+        <z>0</z>
+    </point>
+</Root>
