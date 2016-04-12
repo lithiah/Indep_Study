@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include "math.h"
+#include <pthread.h>
 
 // ***************** LOAD AND READ DATA ***************** //
 void loadVectors(std::map<int, std::vector<float>>* vectorsMap, std::string fileName, int numberOfAttributes) {
@@ -61,26 +62,6 @@ void populateActiveDimensions(std::vector<int>* activeDimensions, int numberOfAt
 // ***************** CLUSTERING ***************** //
 class Clusters {
 public:
-    //VARIABLES
-    
-    //the raw vector data from XML
-    std::map<int, std::vector<float>> data;
-    
-    //which dimensions to include in calculations
-    std::vector<int> activeDimensions;
-    
-    //each point id mapped to it's cluster
-    std::map<int, int> clusterAssignments;
-    
-    //vector of each cluster's size
-    std::map<int, int> clusterSizes;
-    
-    //how many clusters to use
-    int numberOfClusters;
-    
-    //vectors of each cluster centroid
-    std::vector<std::vector<float>> centroids;
-    
     //SETUP
     //constructor
     Clusters(std::map<int, std::vector<float>> Data, int NumberOfClusters, std::vector<int> activeDimensions);
@@ -89,18 +70,36 @@ public:
     void setupClusters();
     
     //ALGORITHM
-    //complete one iteration of assignment
-    void iterateAssignmentStep();
+    void runSequential(int maxIterations);
+    void runParallel(int maxIterations);
     
     //RESULTS
     void printClusterAssignments();
     
 private:
+    //VARIABLES
+    //the raw vector data from XML
+    std::map<int, std::vector<float>> data;
+    //which dimensions to include in calculations
+    std::vector<int> activeDimensions;
+    //each point id mapped to it's cluster
+    std::map<int, int> clusterAssignments;
+    //vector of each cluster's size
+    std::map<int, int> clusterSizes;
+    //how many clusters to use
+    int numberOfClusters;
+    //vectors of each cluster centroid
+    std::vector<std::vector<float>> centroids;
+    
     //HELPER FUNCTIONS
     //calculate distance between a point and centroid
     float distance(std::vector<float> point, std::vector<float> centroid);
-    
+    //complete one sequential iteration of assignment
+    void seqAssignmentStep();
+    //complete one parallel iteration of assignment
+    static void* parAssignmentStep(void* arg);
 };
+
 
 Clusters::Clusters(std::map<int, std::vector<float>> Data, int NumberOfClusters, std::vector<int> ActiveDimensions) {
     data = Data;
@@ -126,7 +125,73 @@ void Clusters::setupClusters() {
     }
 }
 
-void Clusters::iterateAssignmentStep() {
+void Clusters::printClusterAssignments() {
+    typedef std::map<int, int>::iterator it_type;
+    
+    for(it_type iterator = clusterAssignments.begin(); iterator != clusterAssignments.end(); iterator++) {
+        std::cout << iterator->first << ": ";
+        std::cout << iterator->second << std::endl;
+    }
+}
+
+void Clusters::runSequential(int maxIterations) {
+    for (int i=0; i<maxIterations; i++) {
+        seqAssignmentStep();
+    }
+}
+
+void Clusters::runParallel(int maxIterations) {
+    pthread_t thread1, thread2;
+    
+    pthread_create(&thread1, 0, parAssignmentStep, this);
+//    pthread_create(&thread2, 0, parAssignmentStep, this);
+    pthread_join(thread1, 0);
+    std::cout << "All done with thread1." << std::endl;
+//    pthread_join(thread2, 0);
+//    std::cout << "All done with thread2." << std::endl;
+}
+
+void* Clusters::parAssignmentStep(void* arg) {
+    Clusters* x = static_cast<Clusters*>(arg);
+    
+    // do whatever the thread needs to do, and use the 'mw' as a reference to your class object.
+    
+    //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
+    int closestCluster;
+    float minDistance;
+    float newDistance;
+    //for each point
+    for (int i=0; i<x->data.size(); i++) {
+        closestCluster = 0;
+        minDistance = 1000000000;
+        //for each cluster
+        for (int j=0; j<x->centroids.size(); j++) {
+            
+                        std::cout << "data[i] (x,y): " << x->data[i][0] << ", " << x->data[i][1] << std::endl;
+                        std::cout << "centroids[j] (x,y): " << x->centroids[j][0] << ", " << x->centroids[j][1] << std::endl;
+            
+            newDistance = x->distance(x->data[i], x->centroids[j]);
+            
+                        std::cout << "newDistance: " << newDistance << std::endl;
+                        std::cout << "minDistance: " << minDistance << std::endl;
+            
+            if (newDistance < minDistance) {
+                                std::cout << "Reassigning to newDistance" << std::endl;
+                closestCluster = j;
+                minDistance = newDistance;
+            }
+            
+                        std::cout << std::endl << "---------------------" << std::endl << std::endl;
+        }
+        
+        x->clusterAssignments[i] = closestCluster;
+        
+    }//assigned cluster to each point
+
+    return 0;
+}
+
+void Clusters::seqAssignmentStep() {
     //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
     int closestCluster;
     float minDistance;
@@ -138,21 +203,21 @@ void Clusters::iterateAssignmentStep() {
         //for each cluster
         for (int j=0; j<centroids.size(); j++) {
             
-            std::cout << "data[i] (x,y): " << data[i][0] << ", " << data[i][1] << std::endl;
-            std::cout << "centroids[j] (x,y): " << centroids[j][0] << ", " << centroids[j][1] << std::endl;
+            //            std::cout << "data[i] (x,y): " << data[i][0] << ", " << data[i][1] << std::endl;
+            //            std::cout << "centroids[j] (x,y): " << centroids[j][0] << ", " << centroids[j][1] << std::endl;
             
             newDistance = distance(data[i], centroids[j]);
             
-            std::cout << "newDistance: " << newDistance << std::endl;
-            std::cout << "minDistance: " << minDistance << std::endl;
+            //            std::cout << "newDistance: " << newDistance << std::endl;
+            //            std::cout << "minDistance: " << minDistance << std::endl;
             
             if (newDistance < minDistance) {
-                std::cout << "Reassigning to newDistance" << std::endl;
+                //                std::cout << "Reassigning to newDistance" << std::endl;
                 closestCluster = j;
                 minDistance = newDistance;
             }
-
-            std::cout << std::endl << "---------------------" << std::endl << std::endl;
+            
+            //            std::cout << std::endl << "---------------------" << std::endl << std::endl;
         }
         
         clusterAssignments[i] = closestCluster;
@@ -171,7 +236,7 @@ void Clusters::iterateAssignmentStep() {
             centroids[i][j] = 0;
         }
     }
-
+    
     
     //add each point to corresponding centroid
     for (int i=0; i<data.size(); i++) {
@@ -197,41 +262,25 @@ void Clusters::iterateAssignmentStep() {
     }
 }
 
-void Clusters::printClusterAssignments() {
-    typedef std::map<int, int>::iterator it_type;
-    
-    for(it_type iterator = clusterAssignments.begin(); iterator != clusterAssignments.end(); iterator++) {
-        std::cout << iterator->first << ": ";
-        std::cout << iterator->second << std::endl;
-    }
-}
-
-
 // ************ MAIN ************* //
 int main() {
     std::map<int, std::vector<float>> vectorsMap;
-    int numberOfAttributes = 3;
-    std::string fileName = "testFile.xml";
+    int numberOfAttributes = 8;
+    std::string fileName = "actorsData.xml";
     std::vector<int> activeDimensions;
-    
-    activeDimensions.push_back(0);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(0);
+    int maxIterations = 10;
     
     loadVectors(&vectorsMap, fileName, numberOfAttributes);
-//    printVectors(&vectorsMap, numberOfAttributes);
-    populateActiveDimensions(&activeDimensions, numberOfAttributes);
+    populateActiveDimensions(&activeDimensions, numberOfAttributes); //use all
     
-    Clusters testCase = Clusters(/*data*/ vectorsMap, /*number of clusters*/ 2, /*which dims to use */ activeDimensions);
-    
+    Clusters testCase = Clusters(/*data*/ vectorsMap, /*number of clusters*/ 3, /*which dims to use */ activeDimensions);
     testCase.setupClusters();
-    testCase.iterateAssignmentStep();
-    testCase.printClusterAssignments();
-    testCase.iterateAssignmentStep();
+    
+//    testCase.runSequential(maxIterations);
+//    testCase.printClusterAssignments();
+    
+    testCase.runParallel(maxIterations);
     testCase.printClusterAssignments();
     
     return 0;
 }
-
-
-
