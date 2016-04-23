@@ -4,16 +4,4 @@ block content
   h1= title
   br
   
-  form#inputNumbers(name="addnumber",method="post",action="/")
-        input#numberToAdd(type="text", placeholder="number", name="number")
-        button#btnSubmit(type="submit") submit
-  
-  p Number you submitted: #{sentValue}
-  
-  br
-  
-  p C++ timesTwo() method (should return 2*number): #{cppOutput}
-  p C++ threadTest() (should return "aello"): #{threadTest}
-  p C++ threadSum() (should return sum of odd integers 1 through number): #{threadSum}
-  
-  
+  p= clusterResults
