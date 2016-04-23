@@ -52,10 +52,9 @@ void printVectors(std::map<int, std::vector<float>>* vectorsMap, int numberOfAtt
     }
 }
 
-void populateActiveDimensions(std::vector<int>* activeDimensions, int numberOfAttributes) {
-    (*activeDimensions).push_back(0);
-    for (int i = 0; i < numberOfAttributes; i++) {
-        (*activeDimensions).push_back(1);
+void populateActiveDimensions(std::vector<int>* activeDimensions, int numberOfAttributes, std::vector<int> userInputDimensions) {
+    for(std::vector<int>::iterator it = userInputDimensions.begin(); it != userInputDimensions.end(); ++it) {
+        (*activeDimensions).push_back(*it);
     }
 }
 
@@ -218,7 +217,6 @@ void* Clusters::parAssignmentStep2(void* arg) {
     return 0;
 }
 
-
 void Clusters::seqAssignmentStep() {
     //1: for each point calculate distance from centroid, determine which distance is smallest, assign to cluster with smaller distance
     int closestCluster;
@@ -285,20 +283,22 @@ int main() {
     std::map<int, std::vector<float>> vectorsMap;
     int numberOfAttributes = 8;
     std::string fileName = "actorsData.xml";
-    std::vector<int> activeDimensions;
     int maxIterations = 10;
+    std::vector<int> activeDimensions;
+    std::vector<int> userInputDimensions;
+    
+    //will be coming in from user ideally
+    userInputDimensions.push_back(0);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
+    userInputDimensions.push_back(1);
     
     loadVectors(&vectorsMap, fileName, numberOfAttributes);
-//    populateActiveDimensions(&activeDimensions, numberOfAttributes); //use all
-    
-    activeDimensions.push_back(0);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
-    activeDimensions.push_back(1);
+    populateActiveDimensions(&activeDimensions, numberOfAttributes, userInputDimensions); //use all
     
     Clusters testCase = Clusters(/*data*/ vectorsMap, /*number of clusters*/ 2, /*which dims to use */ activeDimensions);
     testCase.setupClusters();
