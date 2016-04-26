@@ -68,7 +68,7 @@ function generateChart(data) {
     .append("text")
         .attr("class", "label")
         .attr("x", width)
-        .attr("y", -6)
+        .attr("y", 50)
         .style("text-anchor", "end")
         .text("Years");
 
@@ -78,7 +78,7 @@ function generateChart(data) {
     .append("text")
         .attr("class", "label")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", -50)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Rank");
