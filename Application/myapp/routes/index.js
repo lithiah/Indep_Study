@@ -5,15 +5,13 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-    clusters = cpphello.clustersInit(/*all data points data as 1 vector*/[1, 1, 2, 1, 4, 3, 5, 4], /*number of iterations*/10, /*number of clusters*/2, /*number of attributes*/2, /*active dimensions*/[1, 1]);
+    var data = [1, 1, 2, 1, 4, 3, 5, 4];
+    var iterations = 10;
+    var clusters = 2;
+    var attributes = 2;
+    var activeDimensions = [1,1];
 
-    console.log("Cluster Assignment Results: ", clusters);
-    console.log(typeof(clusters));
-    var i = 0;
-    for (thing in clusters) {
-        console.log(i, ": ", clusters[i]);
-        i++;
-    }
+    clusters = cpphello.clustersInit(data, iterations, clusters, attributes, activeDimensions);
 
     res.render('index', { title: 'Testing', clusterResults: clusters});
 

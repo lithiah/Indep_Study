@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
