@@ -257,5 +257,37 @@
                 I wrote the cluster class and implemented my own version of the algorithm with a sequential version of the iterations and a parallel version which does the distance calculations in parallel with two threads. I saw an few available kmeans implementations available online, however none of these offered the ability to import data from an XML file, nor the flexibility to choose which dimensions of a data point to include in calculations. I specifically want these to be user-specified parameters, as the idea is to allow a user to upload their own XML online and see the resulting cluster visualization.
             </p>
         </div>
+
+        <div class="week">
+            <h2>Weeks 11/12</h2>
+            <p>
+                Task:
+                <br />
+                (1) Hook up C++ Cluster code to Express App
+                <br />
+                (2) Begin creating visualization
+            </p>
+            <p>
+                Results:
+                <br />
+                I managed to add in the C++ Cluster code to the Express App (after a lot of hardship!). The tricky part was that incoming data from the app, and outgoing data back to the app, need to be v8 types, which is Google's javascript-in-C++ engine. V8 has very, very little documentation or examples out there, so this was a lot of guess and check. Finally, that part was working, and then I was having linkage issues with the pugixml which was what I used to import the xml data into the C++. The only solution to the error I could find was to simply re-install the node modules, but this did not solve the error.
+                <br />
+                Eventually, I scrapped the idea of loading the XML within the C++ code, and decided to pass it from the javascript instead. The pro to this idea wound up being that converting XML in javascript is much easier than in C++, and it took way less work to achieve a better result (store more information that I did before about each point). The con was that I didn't think to do this earlier. So now the XML file is read and parsed within the app, and this information is passed to the C++ code along with other user-determined values like number of clusters and number of iterations.
+                <br />
+                Here's a picture of some of the C++ addon code, the init function below, and the clusterAssignments parser above.
+                <br />
+                <img src="Images/clusterAddonCode.png" />
+                <br />
+                And here is the router post method in index.js, which is what's called when the submit button is pushed. Note the code is specific to the actorsData.xml file.
+                <br />
+                <img src="Images/routerPost.png" />
+                <br />
+                Once this was working, I started to setup the viusalization. Gousie and I decided the viusalization would focus on data similar to the actors data, where the two main axes are ranking and year, so the viusalization uses those for the x and y axis.
+                <br />
+                Right now, the only indication of cluster assignments is the color of the point. Ideally, we would like to show in some way the groupings better, by perhaps shading the background behind the clusters to the cluster color. Below is an image of how far along the visualization is. At the top we see the readout of the cluster assignments. Then, the XML file name is chosen in the text field (assuming the XML file is located in the public directory of the app) and on 'submit', the resulting graph is drawn. (You can scroll to the right to see the rest of the visualization in the actual app).
+                <br />
+                <img src="Images/ClusterVisualization.png" style="width: 100%;"/>
+            </p>
+        </div>
     </body>
 </html>
