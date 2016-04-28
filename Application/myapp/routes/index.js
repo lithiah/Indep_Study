@@ -7,18 +7,18 @@ var router = express.Router();
 
 var data = [1, 1, 2, 1, 4, 3, 5, 4];
 var iterations = 10;
-var clusters = 2;
+var clustersCount = 2;
 var attributes = 2;
 var activeDimensions = [1,1];
 
-clusters = cpphello.clustersInit(data, iterations, clusters, attributes, activeDimensions);
+initialClusters = cpphello.clustersInit(data, iterations, clustersCount, attributes, activeDimensions);
 
 function vectorize_XML(xmlName) {
 
 }
 
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Testing', clusterResults: clusters});
+    res.render('index', { title: 'Testing', clusterResults: initialClusters});
 
 });
 
@@ -40,7 +40,12 @@ router.post('/', function (req, res) {
             var numOfAttributes = Object.keys(result["actorData"]["actor"][0]).length - 1;
             var activeDimArray = Array(attributes).join('1').split('').map(parseFloat);
 
-            newClusters = cpphello.clustersInit(Clustersdata, iterations, clusters, numOfAttributes, activeDimArray);
+            console.log("iterations: ", iterations);
+            console.log("clusters: ", clustersCount);
+            console.log("numOfAttributes: " , numOfAttributes);
+            console.log("activeDimArray: ", activeDimArray);
+
+            newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
 
             res.render('index', {title: 'Testing', clusterResults: newClusters});
         });
