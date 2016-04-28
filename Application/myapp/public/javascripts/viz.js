@@ -22,7 +22,8 @@ function generateChart(data) {
         .scale(x)
         .orient("bottom")
         .ticks(data.length)
-        .tickSize(-height, 0, 0);
+        .tickSize(-height, 0, 0)
+        .tickFormat(d3.format( "d" ));
 
     var yAxis = d3.svg.axis()
         .scale(y)
@@ -39,7 +40,7 @@ function generateChart(data) {
 
     //create axes
     svg.append("g")
-        .attr("class", "x axis")
+        .attr("class", "xaxis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
     .append("text")
@@ -50,7 +51,7 @@ function generateChart(data) {
         .text("Years");
 
     svg.append("g")
-        .attr("class", "y axis")
+        .attr("class", "yaxis")
         .call(yAxis)
     .append("text")
         .attr("class", "label")
