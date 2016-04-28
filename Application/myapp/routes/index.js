@@ -43,11 +43,14 @@ router.post('/', function (req, res) {
             var activeDimArray = Array(numOfAttributes + 1).join('1').split('').map(parseFloat);
 
             console.log(activeDimArray);
+            console.log(numOfAttributes);
 
             newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
 
             for (var i=0; i<newClusters.length; i++) {
-                Vizdata[i]["cluster"] = newClusters[i];
+                if (newClusters[i]) {
+                    Vizdata[i]["cluster"] = newClusters[i];
+                }
             }
 
             res.render('index', {title: 'Testing', clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
