@@ -2,5 +2,12 @@ extends layout
 
 block content
   p= clusterResults
-  
+  br
+  form(name="xml-route", method="post")
+        div.input
+            span.label XML file:  
+            input(type="text", name="xmlName", value="actorsdata.xml")
+        div.actions
+            input(type="submit", value="submit")
+  br
   div#viz

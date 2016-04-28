@@ -37,7 +37,7 @@ function generateChart(data) {
 
     var y = d3.scale.linear()
         .range([height, 0])
-        .domain(d3.extent(data, function(d) { return d["vector"][1]; }));
+        .domain([1, 10]);
 
     var color = d3.scale.category10();
 
