@@ -1,34 +1,11 @@
 $(document).ready(function() {
-    // var data = [
-    //     {
-    //         "name": "Zoey",
-    //         "cluster": 0,
-    //         "vector": [1936, 1] //x is year, y is rank
-    //     },
-    //     {
-    //         "name": "Poe",
-    //         "cluster": 0,
-    //         "vector": [1923, 3]
-    //     },
-    //     {
-    //         "name": "Dipper",
-    //         "cluster": 1,
-    //         "vector": [1954, 9]
-    //     },
-    //     {
-    //         "name": "Quinton",
-    //         "cluster": 1,
-    //         "vector": [1962, 7]
-    //     }
-    // ]
-
     generateChart(data);
 });
 
 function generateChart(data) {
     //margins & svg canvas size
     var margin = {top: 40, right: 120, bottom: 50, left: 50},
-    width = 860 - margin.left - margin.right,
+    width = 5000 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
@@ -39,7 +16,7 @@ function generateChart(data) {
         .range([height, 0])
         .domain([1, 10]);
 
-    var color = d3.scale.category10();
+    var color = d3.scale.category20();
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -91,6 +68,6 @@ function generateChart(data) {
         .attr("r", 5)
         .attr("cx", function(d) { return x(d["x"]); })
         .attr("cy", function(d) { return y(d["y"]); })
-        .style("fill", "green")
+        .style("fill", function(d) { return color(d["cluster"]); })
         .style("stroke", "#008000");
 }
