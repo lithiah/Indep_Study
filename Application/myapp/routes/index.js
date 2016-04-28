@@ -29,44 +29,35 @@ router.post('/', function (req, res) {
 
         parseString(xml, function (err, result) {
             var Clustersdata = [];
+            var Vizdata = [];
+
             for (actor in result["actorData"]["actor"]) {
                 for (attribute in result["actorData"]["actor"][actor]) {
                     if (attribute != "Name") {
                         Clustersdata.push(parseFloat(result["actorData"]["actor"][actor][attribute][0]));
                     }
                 }
+                var nextActor = {};
+                nextActor["name"] = result["actorData"]["actor"][actor]["Name"][0];
+                nextActor["x"] = parseFloat(result["actorData"]["actor"][actor]["MedianYear"][0]);
+                nextActor["y"] = parseFloat(result["actorData"]["actor"][actor]["MedianRank"][0]);
+                Vizdata.push(nextActor);
             }
 
             var numOfAttributes = Object.keys(result["actorData"]["actor"][0]).length - 1;
             var activeDimArray = Array(attributes).join('1').split('').map(parseFloat);
 
-            console.log("iterations: ", iterations);
-            console.log("clusters: ", clustersCount);
-            console.log("numOfAttributes: " , numOfAttributes);
-            console.log("activeDimArray: ", activeDimArray);
-
             newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
 
-            res.render('index', {title: 'Testing', clusterResults: newClusters});
+            for (var i=0; i<newClusters.length; i++) {
+                Vizdata[i]["cluster"] = newClusters[i];
+            }
+
+            console.log(Vizdata);
+
+            res.render('index', {title: 'Testing', clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
         });
     });
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-            //result["actorData"]["actor"]
-            // { Name: [ 'Williams, E.' ],
-            // Count: [ '2' ],
-            // Degree: [ '13' ],
-            // MedianYear: [ '1949.5' ],
-            // MedianRank: [ '8' ],
-            // MeanYear: [ '1949.5' ],
-            // MeanRank: [ '8' ],
-            // DegreeYear: [ '6.5' ] },

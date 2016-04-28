@@ -1,26 +1,26 @@
 $(document).ready(function() {
-    var data = [
-        {
-            "name": "Zoey",
-            "cluster": 0,
-            "vector": [1936, 1] //x is year, y is rank
-        },
-        {
-            "name": "Poe",
-            "cluster": 0,
-            "vector": [1923, 3]
-        },
-        {
-            "name": "Dipper",
-            "cluster": 1,
-            "vector": [1954, 9]
-        },
-        {
-            "name": "Quinton",
-            "cluster": 1,
-            "vector": [1962, 7]
-        }
-    ]
+    // var data = [
+    //     {
+    //         "name": "Zoey",
+    //         "cluster": 0,
+    //         "vector": [1936, 1] //x is year, y is rank
+    //     },
+    //     {
+    //         "name": "Poe",
+    //         "cluster": 0,
+    //         "vector": [1923, 3]
+    //     },
+    //     {
+    //         "name": "Dipper",
+    //         "cluster": 1,
+    //         "vector": [1954, 9]
+    //     },
+    //     {
+    //         "name": "Quinton",
+    //         "cluster": 1,
+    //         "vector": [1962, 7]
+    //     }
+    // ]
 
     generateChart(data);
 });
@@ -33,7 +33,7 @@ function generateChart(data) {
 
     var x = d3.scale.linear()
         .range([0, width])
-        .domain(d3.extent(data, function(d) { return d["vector"][0]; }));
+        .domain(d3.extent(data, function(d) { return d["x"]; }));
 
     var y = d3.scale.linear()
         .range([height, 0])
@@ -89,8 +89,8 @@ function generateChart(data) {
     .enter().append("circle")
         .attr("class", "dot")
         .attr("r", 5)
-        .attr("cx", function(d) { return x(d["vector"][0]); })
-        .attr("cy", function(d) { return y(d["vector"][1]); })
+        .attr("cx", function(d) { return x(d["x"]); })
+        .attr("cy", function(d) { return y(d["y"]); })
         .style("fill", "green")
         .style("stroke", "#008000");
 }
