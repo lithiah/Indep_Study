@@ -6,7 +6,7 @@ var xml2js = require('xml2js');
 var router = express.Router();
 
 var iterations = 10;
-var clustersCount = 20; //cannot exceed number of points in data
+var clustersCount = 20; //cannot exceed number of points in data, max for color mapping to chart is 20
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Testing', clusterResults: []});
@@ -37,16 +37,20 @@ router.post('/', function (req, res) {
 
             var numOfAttributes = Object.keys(result["actorData"]["actor"][0]).length - 1;
             var activeDimArray = Array(numOfAttributes + 1).join('1').split('').map(parseFloat);
-            
+
             newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
 
             for (var i=0; i<newClusters.length; i++) {
                 if (newClusters[i]) {
                     Vizdata[i]["cluster"] = newClusters[i];
                 }
+                else {
+                    Vizdata[i]["cluster"] = 0;
+                }
             }
 
             console.log(Vizdata);
+            console.log(newClusters);
 
             res.render('index', {title: 'Testing', clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
         });

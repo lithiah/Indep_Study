@@ -37,7 +37,7 @@ function generateChart(data) {
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    
     //create axes
     svg.append("g")
         .attr("class", "xaxis")
@@ -61,17 +61,7 @@ function generateChart(data) {
         .style("text-anchor", "end")
         .text("Rank");
 
-    //create circles
-    svg.selectAll(".dot")
-        .data(data)
-    .enter().append("circle")
-        .attr("class", "dot")
-        .attr("r", 5)
-        .attr("cx", function(d) { return x(d["x"]); })
-        .attr("cy", function(d) { return y(d["y"]); })
-        .style("fill", function(d) { return color(d["cluster"]); })
-        .style("stroke", "#008000");
-
+    //create cluster overlay
     svg.selectAll(".cluster")
         .data(data)
     .enter().append("circle")
@@ -82,4 +72,49 @@ function generateChart(data) {
         .style("fill", function(d) { return color(d["cluster"]); })
         .style("opacity", .05)
         .style("stroke-width", 0);
+
+    //create circles
+    var dots = svg.selectAll(".dot")
+        .data(data)
+    .enter().append("g")
+        .attr("class", "dot");
+
+    dots.append("circle")
+        .attr("class", "circle")
+        .attr("r", 5)
+        .attr("cx", function(d) { return x(d["x"]); })
+        .attr("cy", function(d) { return y(d["y"]); })
+        .style("fill", function(d) { return color(d["cluster"]); })
+        .style("stroke", "#008000")
+        .on("mouseover", function(d) {
+            svg.append("text")
+                .attr("class", "dottext")
+                .attr("x", d.cx)
+                .attr("y", d.cy)
+                .text( function () { return d.name + ": " + d.cluster; })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "1em")
+                .attr("fill", "black")
+                .attr("transform", function() {
+
+                    var ycor = parseFloat(y(d["y"])) - 20;
+
+                    return "translate(" + x(d["x"]) + "," + ycor.toString() + ")";
+                });
+        })
+        .on("mouseout", function() {
+            d3.selectAll(".dottext").remove();
+        });
+
+    // var text = svg.selectAll("text")
+    //     .data(data)
+    // .enter().append("text")
+    //     .attr("class", "dottext")
+    //     .attr("x", function(d) { return x(d["x"]); })
+    //     .attr("y", function(d) { return y(d["y"])-20; })
+    //     .text( function (d) { console.log(d["name"], d["cluster"]); return d["name"] + ": " + d["cluster"]; })
+    //     .attr("font-family", "sans-serif")
+    //     .attr("font-size", "1em")
+    //     .attr("fill", "black");
+        
 }
