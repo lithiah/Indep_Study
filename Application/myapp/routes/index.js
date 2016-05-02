@@ -8,10 +8,6 @@ var router = express.Router();
 var iterations = 10;
 var clustersCount = 20; //cannot exceed number of points in data
 
-function vectorize_XML(xmlName) {
-
-}
-
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Testing', clusterResults: []});
 
@@ -41,10 +37,7 @@ router.post('/', function (req, res) {
 
             var numOfAttributes = Object.keys(result["actorData"]["actor"][0]).length - 1;
             var activeDimArray = Array(numOfAttributes + 1).join('1').split('').map(parseFloat);
-
-            console.log(activeDimArray);
-            console.log(numOfAttributes);
-
+            
             newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
 
             for (var i=0; i<newClusters.length; i++) {
@@ -52,6 +45,8 @@ router.post('/', function (req, res) {
                     Vizdata[i]["cluster"] = newClusters[i];
                 }
             }
+
+            console.log(Vizdata);
 
             res.render('index', {title: 'Testing', clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
         });

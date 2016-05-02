@@ -71,4 +71,15 @@ function generateChart(data) {
         .attr("cy", function(d) { return y(d["y"]); })
         .style("fill", function(d) { return color(d["cluster"]); })
         .style("stroke", "#008000");
+
+    svg.selectAll(".cluster")
+        .data(data)
+    .enter().append("circle")
+        .attr("class", "cluster")
+        .attr("r", 50)
+        .attr("cx", function(d) { return x(d["x"]); })
+        .attr("cy", function(d) { return y(d["y"]); })
+        .style("fill", function(d) { return color(d["cluster"]); })
+        .style("opacity", .05)
+        .style("stroke-width", 0);
 }
