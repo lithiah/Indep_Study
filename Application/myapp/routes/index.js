@@ -38,7 +38,13 @@ router.post('/', function (req, res) {
             var numOfAttributes = Object.keys(result["actorData"]["actor"][0]).length - 1;
             var activeDimArray = Array(numOfAttributes + 1).join('1').split('').map(parseFloat);
 
-            newClusters = cpphello.clustersInit(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
+            var start1 = new Date().getTime();
+            newClusters = cpphello.clustersInitPar2(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
+            var time1 = new Date().getTime() - start1;
+
+            var start2 = new Date().getTime();
+            newClusters2 = cpphello.clustersInitSeq(Clustersdata, iterations, clustersCount, numOfAttributes, activeDimArray);
+            var time2 = new Date().getTime() - start2;
 
             for (var i=0; i<newClusters.length; i++) {
                 if (newClusters[i]) {
@@ -49,10 +55,10 @@ router.post('/', function (req, res) {
                 }
             }
 
-            console.log(Vizdata);
-            console.log(newClusters);
+            console.log("Par: ", time1);
+            console.log("Seq: ", time2);
 
-            res.render('index', {title: 'Testing', clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
+            res.render('index', {title: 'Testing', parTime: time1, seqTime: time2, clusterResults: newClusters, vizResults: JSON.stringify(Vizdata)});
         });
     });
 });

@@ -3,7 +3,8 @@ extends layout
 block content
   script(type='text/javascript').
     var data = !{vizResults};
-    
+  p "Parallel time: " #{parTime}
+  p "Sequential time: " #{seqTime}
   p= clusterResults
   br
   form(name="xml-route", method="post")
