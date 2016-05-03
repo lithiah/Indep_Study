@@ -14,7 +14,7 @@ function generateChart(data) {
 
     var y = d3.scale.linear()
         .range([height, 0])
-        .domain([1, 10]);
+        .domain([10, 1]);
 
     var color = d3.scale.category20();
 
