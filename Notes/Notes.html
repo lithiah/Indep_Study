@@ -24,7 +24,6 @@
 
         <div class="week">
             <h2>Week 1</h2>
-            <p>
                 Task: Explore what types of visualizations are out there, specifically looking at types of visualizations that were used for very large data sets. Also look to see to what extent data viz in parallel is already being worked on/if there is existing research that would be useful, and what tools are available for performing these operations in parallel for the web.
             </p>
             <p>
@@ -287,6 +286,53 @@
                 Right now, the only indication of cluster assignments is the color of the point. Ideally, we would like to show in some way the groupings better, by perhaps shading the background behind the clusters to the cluster color. Below is an image of how far along the visualization is. At the top we see the readout of the cluster assignments. Then, the XML file name is chosen in the text field (assuming the XML file is located in the public directory of the app) and on 'submit', the resulting graph is drawn. (You can scroll to the right to see the rest of the visualization in the actual app).
                 <br />
                 <img src="Images/ClusterVisualization.png" style="width: 100%;"/>
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Week 13 (Last Week!)</h2>
+            <p>
+                Task:
+                <br />
+                (1) Minor Visualization Changes
+                <br />
+                (2) Time Peformance
+            </p>
+            <p>
+                Results:
+                <br />
+                The minor alterations to the visualization that I made were as follows:
+                <br>
+                <ul>
+                    <li>Reverse ranking order so that 1 is at the top</li>
+                    <li>Add a translucent second circle around each point to better show clusters</li>
+                    <li>Show actor name and cluster group when hovering over point</li>
+                </ul>   
+                Secondly, I timed the performance of the C++ cluster calculations. I timed the call starting in the backend of the app before calling the C++ addon to calculate the clusters, and stopped timing once the results were return to the app. I did this for cluster calcuations using no parallelization, one thread, two threads, four threads, and eight threads. I then wrote a new page on my app /timing which shows how quickly the addon calls return their values for an extended version of the actorsData.xml which was 8x longer than the original. So the addon was calculating the clusters for 216*8=1728 points with 7 dimensional attributes. 
+                <br>
+                I return to the /timing page the results of one iteration of the code, as well as the average for running the code 10 times for each version of the cluster calculations. You can see the results from a run on my Mac (with 4 cores) below:
+                <br>
+                <img src="Images/timingOneIter.png" style="width: 25%;"/>
+                <img src="Images/timingAverage.png" style="width: 30%;"/>
+                <br>
+                Here we see results as we would expect for my 4 core machine. As the number of threads increases, we see a time speedup up until we get to the 8 threads, where the speedup decreases. This is definitely evidence that the parallelization of the code increased performance. The percent increase between the sequential version of the code and the 4 thread parallel version here is 163.89%.
+            </p>
+        </div>
+
+        <div class="week">
+            <h2>Conclusions/Future Work</h2>
+            <p>
+                The most overarching goal of this project this semester was to create a visualization for the web in which the data calculations are done in parallel, to demonstrate an increase in performance for visualizations with large data sets. This concept was demonstrated by creating a cluster visualization for Actors Rankings where the clusters were determined by a C++ addon that ran the cluster calculations in parallel. By timing the speed of the cluster calculations code we saw a marked improvement over running the code sequentially, validating the benefits of using parallel code for this kind of problem. 
+            </p>
+            <p>While the largest goal of the semester was achieved, there were other goals that did not come to fruition due to lack of time that would be beneficial for future work: 
+            <ul>
+                <li>Allow user to specify the number of iterations, threads, and clusters to use in calculations</li>
+                <li>Add a legend to the visualization showing members of each cluster</li>
+                <li>Allow for filtering of the visualization by cluster membership, year range, or name</li>
+                <li>Refactor cluster calculations code to be less redundent, in turn allowing the user to specify the number of threads to use beyond the premade 1, 2, 4, or 8 options</li>
+                <li>Run more extensive and varied timing tests (only time when thread is executing, time on other machines, etc)</li>
+                <li>Generalize code to work for user specified xml files</li>
+            </ul>
             </p>
         </div>
     </body>

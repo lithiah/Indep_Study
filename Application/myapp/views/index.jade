@@ -3,15 +3,5 @@ extends layout
 block content
   script(type='text/javascript').
     var data = !{vizResults};
-  p "Parallel time: " #{parTime}
-  p "Sequential time: " #{seqTime}
-  p= clusterResults
-  br
-  form(name="xml-route", method="post")
-        div.input
-            span.label XML file:  
-            input(type="text", name="xmlName", value="actorsdata.xml")
-        div.actions
-            input(type="submit", value="submit")
-  br
+  a(href="/timing") Time cluster calculations 
   div#viz

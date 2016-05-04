@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  a(href="/") Back to visualization
+
+  br
+  br
+
+  p One iteration:
+  p Sequential time: #{seqTime} ms
+  p One Thread Parallel time: #{par1Time} ms
+  p Two Thread Parallel time: #{par2Time} ms
+  p Four Thread Parallel time: #{par4Time} ms
+  p Eight Thread Parallel time: #{par8Time} ms
+  br
+  p Average of 10 Runs:
+  br
+  p Sequential time: #{SeqTimeArray}
+  p Average: #{SeqTimeAvg} ms
+  br
+  p One Thread Parallel time: #{Par1TimeArray}
+  p Average: #{Par1TimeAvg} ms
+  br
+  p Two Thread Parallel time: #{Par2TimeArray}
+  p Average: #{Par2TimeAvg} ms
+  br
+  p Four Thread Parallel time: #{Par4TimeArray}
+  p Average: #{Par4TimeAvg} ms
+  br
+  p Eight Thread Parallel time: #{Par8TimeArray}
+  p Average: #{Par8TimeAvg} ms
