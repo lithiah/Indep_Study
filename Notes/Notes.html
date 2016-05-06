@@ -335,5 +335,10 @@
             </ul>
             </p>
         </div>
+        <div class="week">
+            <h2>File Structure Outline</h2>
+            <p>
+                Express apps start routing from app.js. This is where you start when you navigate to the website. You are then routed to one of the js files in /routes according to a base URL. Within a /routes js file, you render a /views jade according to which specific URL you have. This would also be where you do any client side preprocessing you need before rendering the page, such as passing a call to the C++ addon cpphello to get the clusters. The addons are found under /node_modules. The jade file you pass values to is an extension of layout.jade which is where all the client side css and javascript files are linked. CSS and client side javascript is located in /public. 
+            </p>
     </body>
 </html>
